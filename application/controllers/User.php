@@ -50,8 +50,17 @@ class user extends CI_Controller {
 
 	public function dashboard()
 	{
+		if(!$this->session->userdata('user_details'))
+		{
+			$this->session->set_flashdata('login_error',"USERNAME AND PASSWORD DO NO MATCH");
+			redirect('login');
+			die();
+		}
 
-     	$this->load->view("dashboard");
+		$userdata=$this->session->userdata('user_details');
+		$data=array();
+		$data=$userdata;
+     	$this->load->view("dashboard",$data);
 	
 	}
 
@@ -91,4 +100,28 @@ class user extends CI_Controller {
 		redirect('login');
 		
 	}
-}
+
+	public function showTeam()
+	{
+
+		if(!$this->session->userdata('user_details'))
+		{
+
+			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+			redirect('login');
+			die();
+
+		}//end of if
+
+		$userdata=$this->session->userdata('user_details');
+		$data=array();
+		$data=$userdata;
+		$data['row']=$this->user_model->showTeamData();
+		$this->load->view("team_table",$data);
+
+	}//end of function
+
+	
+
+
+}//end of model class
