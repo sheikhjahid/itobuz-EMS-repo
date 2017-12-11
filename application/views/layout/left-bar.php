@@ -1,7 +1,7 @@
 <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li class="current"><a href="<?php echo base_url('user/dashboard'); ?>"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
                   
                     <li class="submenu">
                          <a href="#">
@@ -11,7 +11,7 @@
                          <!-- Sub menu -->
                          <ul>
                             <li><a href="<?php echo base_url('team/showTeam'); ?>"><i class="fa fa-list"></i> Teams </a></li>
-                            <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Add Team</a></li>
+                            <li><a href="<?php echo base_url('team/insertTeam'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Add Team</a></li>
                         </ul>
                     </li>
                     <li class='submenu'>
@@ -20,8 +20,8 @@
                       </a>
                      <!--Sub menu-->
                     <ul>
-                            <li><a href="#"><i class="fa fa-list"></i> Roles </a></li>
-                            <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Add Role</a></li>
+                            <li><a href="<?php echo base_url('role/showRole'); ?>"><i class="fa fa-list"></i> Roles </a></li>
+                            <li><a href="<?php echo base_url('role/insertRole'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Add Role</a></li>
                     </ul>
                   
                 </ul>

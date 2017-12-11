@@ -18,6 +18,29 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
+  <style>
+  input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+    .wrapper{
+  text-align: left;
+}
+.btn-default
+{
+  top: 62%;
+  left:80%;
+  position:absolute;
+
+}
+
+  </style>
   <body>
   	<div class="header">
 	     <div class="container">
@@ -42,69 +65,25 @@
 
 	 			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">TEAM TABLE</div>
+					<div class="panel-title">UPDATE TEAM PORTAL</div>
 				</div>
   				<div class="panel-body">
+  					<?php foreach($row as $value){ ?>
+            <form action="<?php echo base_url('team/update_action_Team/').$value->id;?>" method="POST">
+                  <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1"><i>TEAM NAME</i></span>
+                  <input type="text" class="form-control" placeholder="Change Team name.." name="name" aria-describedby="basic-addon1" value="<?php echo $value->name; ?>"   >
+                  </div>
+                </br>
+              </br>
+                 <div>
+                <div class="wrapper">
+              <input type="submit"  class="btn btn-default" value="UPDATE">
+            </div>
+            <?php } ?>
+              </div>
 
-            <?php if($this->session->flashdata('insert_msg'))
 
-            {
-
-             ?>
-
-             <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('insert_msg'); ?></div>
-                  <?php
-                      }
-                  ?>
-
-            <?php if($this->session->flashdata('update_msg'))
-
-             {
-            
-            ?>
-             <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('update_msg'); ?></div>
-                  <?php
-                      }
-                  ?>
-
-  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>TEAM-NAME</th>
-								<th>ACTION</th>
-							</tr>
-						</thead>
-						<tbody>
-                        <?php 
-
-                            
-                               foreach($row as $value) 
-                               { 
-                        ?>
-                        <tr>
-
-                          <td><?php echo $value->id; ?></td>
-                          <td><?php echo $value->name; ?></td>
-                          
-                          
-                           <td><a href="<?php echo base_url('team/viewSpecificTeam/').$value->id; ?>">
-                              <i class=" fa fa-eye" aria-hidden="true"></i>
-                               </a>
-
-                            <a href="<?php echo base_url('team/updateTeam/').$value->id; ?>"> 
-                            <i class="fa fa-edit" aria-hidden="true"></i>
-                          </a>
-                            <a href="#" class="del-user" data-id="#">
-                            <i class="fa fa-trash" aria-hidden="true"  name="delete"></i>
-                          </a>
-                        </td>
-                           </tr>
-
-                            <?php } ?>
-                        
-                      </tbody>
-					</table>
   				</div>
   			</div>
 

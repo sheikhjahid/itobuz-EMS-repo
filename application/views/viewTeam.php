@@ -42,69 +42,29 @@
 
 	 			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">TEAM TABLE</div>
+					<div class="panel-title"><b><i><u>TEAM TABLE</i></b></u></div>
 				</div>
   				<div class="panel-body">
 
-            <?php if($this->session->flashdata('insert_msg'))
-
-            {
-
-             ?>
-
-             <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('insert_msg'); ?></div>
-                  <?php
-                      }
-                  ?>
-
-            <?php if($this->session->flashdata('update_msg'))
-
-             {
-            
-            ?>
-             <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('update_msg'); ?></div>
-                  <?php
-                      }
-                  ?>
-
-  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>TEAM-NAME</th>
-								<th>ACTION</th>
-							</tr>
-						</thead>
-						<tbody>
-                        <?php 
-
-                            
-                               foreach($row as $value) 
-                               { 
-                        ?>
-                        <tr>
-
-                          <td><?php echo $value->id; ?></td>
-                          <td><?php echo $value->name; ?></td>
-                          
-                          
-                           <td><a href="<?php echo base_url('team/viewSpecificTeam/').$value->id; ?>">
-                              <i class=" fa fa-eye" aria-hidden="true"></i>
-                               </a>
-
-                            <a href="<?php echo base_url('team/updateTeam/').$value->id; ?>"> 
-                            <i class="fa fa-edit" aria-hidden="true"></i>
-                          </a>
-                            <a href="#" class="del-user" data-id="#">
-                            <i class="fa fa-trash" aria-hidden="true"  name="delete"></i>
-                          </a>
-                        </td>
-                           </tr>
-
-                            <?php } ?>
-                        
-                      </tbody>
-					</table>
+  					<div class="container">
+        
+      <?php foreach($row as $value) {?>            
+    <div class="row">
+  <div class="col-md-12"> 
+  
+  <div class="col-md-2"><b>ID : </b></div>
+    <div class="col-md-10"><?php echo $value->id;  ?></div>
+  </div>
+</div>
+    <div class="row">
+    <div class="col-md-12">
+    <div class="col-md-2"><b> TEAM-NAME : </b></div>
+    <div class="col-md-10"><?php echo $value->name; ?></div>
+  </div>
+</div>
+    
+<?php } ?>
+</div>
   				</div>
   			</div>
 

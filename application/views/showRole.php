@@ -42,7 +42,7 @@
 
 	 			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">TEAM TABLE</div>
+					<div class="panel-title">ROLE TABLE</div>
 				</div>
   				<div class="panel-body">
 
@@ -57,21 +57,11 @@
                       }
                   ?>
 
-            <?php if($this->session->flashdata('update_msg'))
-
-             {
-            
-            ?>
-             <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('update_msg'); ?></div>
-                  <?php
-                      }
-                  ?>
-
   					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>TEAM-NAME</th>
+								<th>ROLE-NAME</th>
 								<th>ACTION</th>
 							</tr>
 						</thead>
@@ -88,11 +78,11 @@
                           <td><?php echo $value->name; ?></td>
                           
                           
-                           <td><a href="<?php echo base_url('team/viewSpecificTeam/').$value->id; ?>">
+                           <td><a href="#">
                               <i class=" fa fa-eye" aria-hidden="true"></i>
                                </a>
 
-                            <a href="<?php echo base_url('team/updateTeam/').$value->id; ?>"> 
+                            <a href="#"> 
                             <i class="fa fa-edit" aria-hidden="true"></i>
                           </a>
                             <a href="#" class="del-user" data-id="#">
