@@ -46,7 +46,7 @@ class Team extends CI_Controller {
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
-		$data['row']=$this->user_model->showTeamData();
+		$data['row']=$this->user_model->showData(1,'team');
 		$this->load->view("team_table",$data);
 
 	}//end of function
@@ -64,38 +64,24 @@ class Team extends CI_Controller {
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
+
+		if($_SERVER['REQUEST_METHOD']=='POST')
+		{
+			$post=$this->input->post();
+			unset($post['insert_Team_Data']);
+			$query=$this->user_model->insertData('team',$post);
+			if($query==1)
+			{
+				$this->session->set_flashdata('insert_msg','USER TEAM INSERTED SUCCESSFULLY ');
+				redirect('team/showTeam',$data);
+				die();
+			}
+		}
+
 		$this->load->view('insertTeam',$data);
 	}//end of function
 
-	public function insert_action_Team()
-	{
-
-		if(!$this->session->userdata('user_details'))
-		{
-			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO  NOT MATCH');
-			redirect('login');
-			die();
-		}//end of if
-
-		$userdata=$this->session->userdata('user_details');
-		$data=array();
-		$data=$userdata;
-
-
-		$post=$this->input->post();
-		unset($post['insert_Team_data']);
-		$query=$this->user_model->insert_Team_data($post);
-		if($query==1)
-		{
-
-			$this->session->set_flashdata('insert_msg','USER TEAM INSERTED SUCCESSFULLY');
-			redirect('team/showTeam',$data);
-			die();
-
-		}//end of if
-
-	}//end of function
-
+	
 	public function viewSpecificTeam($id)
 	{
 
@@ -108,11 +94,12 @@ class Team extends CI_Controller {
 
 		}//end of if
 
+		$status=1;
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
 
-		$data['row']=$this->user_model->viewTeam($id);
+		$data['row']=$this->user_model->viewData($id,$status,'team');
 		$this->load->view('viewTeam',$data);
 
 	}//end of function
@@ -126,44 +113,55 @@ class Team extends CI_Controller {
 			redirect('login');
 			die();
 		}//end of if
+		$status=1;
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
-
-		$data['row']=$this->user_model->viewTeam($id);
-		$this->load->view('updateTeam',$data);
+        $data['row']=$this->user_model->viewData($id,$status,'team');
+        $this->load->view('updateTeam',$data);
+        if($_SERVER['REQUEST_METHOD']=='POST')
+		{
+			$post=$this->input->post();
+			unset($post['updateData']);
+			$query=$this->user_model->updateData($id,$post,'team');
+			if($query==1)
+			{
+				$this->session->set_flashdata('update_msg','USER TEAM UPDATED SUCCESSFULLY ');
+				redirect('team/showTeam',$data);
+				die();
+			}
+		}
 
 	}//end of function
 
- 	public function update_action_Team($id)
- 	{
+ 	
 
+ 	public function delete($id)
+ 	{
  		if(!$this->session->userdata('user_details'))
  		{
  			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
  			redirect('login');
  			die();
- 		}//end of if
+ 		}
  		$userdata=$this->session->userdata('user_details');
  		$data=array();
  		$data=$userdata;
 
  		$post=$this->input->post();
- 		unset($post['update_Team_Data']);
- 		$query=$this->user_model->update_Team_Data($id,$post);
+ 		$post['status']=0;
+ 		unset($post['delete_Team_Data']);
+ 		$query=$this->user_model->updateData($id,$post,'team');
  		if($query==1)
  		{
 
- 			$this->session->set_flashdata('update_msg','TEAM DATA UPDATED SUCCESSFULLY');
- 			redirect('team/showTeam',$data);
+ 			$this->session->set_flashdata('delete_msg','User Team Deleted Successfully ');
+ 			redirect('team/showTeam');
  			die();
 
- 		}//end of if
- 			
+ 		}
 
  	}//end of function
-
-
 
 }//end of class
 ?>

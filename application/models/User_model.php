@@ -32,55 +32,89 @@ class user_model extends CI_Model
     	$this->db->insert('user-login',$arr);
     }//end of function
 
-    public function showTeamData()
+    public function showData($status=1,$table='')
     {
-    	$this->db->select('*');
-    	//$this->db->where_not_in($id);
-    	$query=$this->db->get('team');
-    	return  $query->result();
+    	if($table!='')
+    	{
+    		$this->db->select('*');
+    		$this->db->where('status',$status);
+	    	$query=$this->db->get($table);
+    		return  $query->result();
+    	}
+    	else
+    	{
+    		return;
+    	}
     }//end of function
 
-    public function insert_Team_data($post)
+    public function insertData($table='',$post)
     {
-    	$query=$this->db->insert('team',$post);
-
+    	$query=$this->db->insert($table,$post);
     	return $query;
     }//end of function
 
-    public function showRoleData()
+    
+
+    public function viewData($id,$status=1,$table='')
     {
 
-    	$this->db->select('*');
-    	$query=$this->db->get('role');
-    	return $query->result();
-
-    }//end of  function
-
-    public function insert_Role_Data($post)
-    {
-
-    	$query=$this->db->insert('role',$post);
-
-    	return $query;
+    	if($table!='')
+    	{
+    		$this->db->select('*');
+    		$this->db->where('id',$id);
+    		$this->db->where('status',$status);
+    		$query=$this->db->get('team');
+    		return $query->result();	
+    	}
+    	else
+    	{
+    		return;
+    	}
+    	
     }//end of function
-
-    public function viewTeam($id)
-    {
-
-    	$this->db->select('*');
-    	$this->db->where('id',$id);
-    	$query=$this->db->get('team');
-    	return $query->result();
-
-    }//end of function
-
-    public function update_Team_Data($id,$field)
+    public function updateData($id,$field,$table)
     {
     	$this->db->where('id',$id);
-    	$query=$this->db->update('team',$field);
+    	$query=$this->db->update($table,$field);
     	return $query;
-
     }//end of function
+
+
+
+  public function view_Role_Data($id)
+  {
+
+  	$this->db->select('*');
+  	$this->db->where('id',$id);
+  	$query=$this->db->get('role');
+  	return $query->result();
+
+  }//end of function
+
+  public function update_Role_Data($id,$field)
+  {
+
+  	$this->db->where('id',$id);
+  	$query=$this->db->update('role',$field);
+  	return $query;
+
+  }//end of function
+
+  public function delete_Role_Data($id,$post)
+  {
+
+  	$this->db->where('id',$id);
+  	$query=$this->db->delete('role');
+  	return $query;
+
+  }//end of function
+
+  public function delete_Team_Data($id,$post)
+  {
+  	$this->db->where('id',$id);
+  	$query=$this->db->delete('team');
+  	return $query;
+  }
 
 }//end of class
 ?>

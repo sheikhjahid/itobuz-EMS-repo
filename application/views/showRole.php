@@ -57,6 +57,21 @@
                       }
                   ?>
 
+
+            <?php if($this->session->flashdata('update_msg')) { ?>
+
+              <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('update_msg'); ?></div>
+                  <?php
+                      }
+                  ?>
+
+            <?php if($this->session->flashdata('delete_msg')){ ?>
+
+            <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('delete_msg'); ?></div>
+                  <?php
+                      }
+                  ?>
+
   					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 						<thead>
 							<tr>
@@ -78,14 +93,14 @@
                           <td><?php echo $value->name; ?></td>
                           
                           
-                           <td><a href="#">
+                           <td><a href="<?php echo base_url('role/viewSpecificRole/').$value->id; ?>">
                               <i class=" fa fa-eye" aria-hidden="true"></i>
                                </a>
 
-                            <a href="#"> 
+                            <a href="<?php echo base_url('role/updateRole/').$value->id; ?>"> 
                             <i class="fa fa-edit" aria-hidden="true"></i>
                           </a>
-                            <a href="#" class="del-user" data-id="#">
+                            <a href="<?php echo base_url('role/deleteRole/').$value->id; ?>" class="del-user" data-id="#">
                             <i class="fa fa-trash" aria-hidden="true"  name="delete"></i>
                           </a>
                         </td>

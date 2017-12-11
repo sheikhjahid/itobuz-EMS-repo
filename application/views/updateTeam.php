@@ -69,7 +69,7 @@
 				</div>
   				<div class="panel-body">
   					<?php foreach($row as $value){ ?>
-            <form action="<?php echo base_url('team/update_action_Team/').$value->id;?>" method="POST">
+            <form action="<?php echo base_url('team/updateTeam/').$value->id;?>" method="POST">
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><i>TEAM NAME</i></span>
                   <input type="text" class="form-control" placeholder="Change Team name.." name="name" aria-describedby="basic-addon1" value="<?php echo $value->name; ?>"   >

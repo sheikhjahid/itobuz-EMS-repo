@@ -69,7 +69,7 @@
 				</div>
   				<div class="panel-body">
   					
-            <form action="<?php echo base_url('role/insert_action_Role');?>" method="POST">
+            <form action="<?php echo base_url('role/insertRole');?>" method="POST">
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><i>ROLE NAME</i></span>
                   <input type="text" class="form-control" placeholder="Enter Role name.." name="name" aria-describedby="basic-addon1"   >

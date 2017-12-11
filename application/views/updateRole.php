@@ -65,21 +65,22 @@
 
 	 			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">INSERT TEAM PORTAL</div>
+					<div class="panel-title">UPDATE ROLE PORTAL</div>
 				</div>
   				<div class="panel-body">
-  					
-            <form action="<?php echo base_url('team/insertTeam');?>" method="POST">
+  					<?php foreach($row as $value){ ?>
+            <form action="<?php echo base_url('role/updateRole/').$value->id;?>" method="POST">
                   <div class="input-group">
-                  <span class="input-group-addon" id="basic-addon1"><i>TEAM NAME</i></span>
-                  <input type="text" class="form-control" placeholder="Enter Team name.." name="name" aria-describedby="basic-addon1"   >
+                  <span class="input-group-addon" id="basic-addon1"><i>ROLE NAME</i></span>
+                  <input type="text" class="form-control" placeholder="Change Role name.." name="name" aria-describedby="basic-addon1" value="<?php echo $value->name; ?>"   >
                   </div>
                 </br>
               </br>
                  <div>
                 <div class="wrapper">
-              <input type="submit"  class="btn btn-default" value="INSERT">
+              <input type="submit"  class="btn btn-default" value="UPDATE">
             </div>
+            <?php } ?>
               </div>
 
 

@@ -46,7 +46,7 @@ class Role extends CI_Controller {
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
-		$data['row']=$this->user_model->showRoleData();
+		$data['row']=$this->user_model->showData(1,'role');
 		$this->load->view('showRole',$data);
 
 	}//end of function
@@ -65,11 +65,78 @@ class Role extends CI_Controller {
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
+
+
+		if($_SERVER['REQUEST_METHOD']=='POST')
+		{
+			$post=$this->input->post();
+			unset($post['insert_Role_Data']);
+			$query=$this->user_model->insertData('role',$post);
+			if($query==1)
+			{
+				$this->session->set_flashdata('insert_msg','USER ROLE INSERTED SUCCESSFULLY ');
+				redirect('role/showRole',$data);
+				die();
+			}
+		}
 		$this->load->view('insertRole',$data);
 
 	}//end of function 
 
-	public function insert_action_Role()
+	
+	public function viewSpecificRole($id)
+	{
+
+		if(!$this->session->userdata('user_details'))
+		{
+			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+			redirect('login');
+			die();
+		}//end  of if
+	
+		$userdata=$this->session->userdata('user_details');
+		$data=array();
+		$data=$userdata;
+		$status=1;
+
+		$data['row']=$this->user_model->viewData($id,$status,'role');
+		$this->load->view('viewRole',$data);
+
+	}//end of function
+
+	public function updateRole($id)
+	{
+
+		if(!$this->session->userdata('user_details'))
+		{
+			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+			redirect('login');
+			die();
+		}//end of if
+
+		$userdata=$this->session->userdata('user_details');
+		$data=array();
+		$data=$userdata;
+		$status=1;
+		$data['row']=$this->user_model->viewData($id,$status,'role');
+        $this->load->view('updateRole',$data);
+        if($_SERVER['REQUEST_METHOD']=='POST')
+		{
+			$post=$this->input->post();
+			unset($post['updateData']);
+			$query=$this->user_model->updateData($id,$post,'role');
+			if($query==1)
+			{
+				$this->session->set_flashdata('update_msg','USER ROLE UPDATED SUCCESSFULLY ');
+				redirect('role/showRole',$data);
+				die();
+			}//end of if
+		}//end of if
+		
+	}//end of function
+
+
+	public function deleteRole($id)
 	{
 
 		if(!$this->session->userdata('user_details'))
@@ -78,26 +145,25 @@ class Role extends CI_Controller {
 			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
 			redirect('login');
 			die();
-
+		
 		}
-
-		$post=$this->input->post();
-		unset($post['insert_Role_Data']);
 
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
 
-		$query=$this->user_model->insert_Role_Data($post);
+		$post=$this->input->post();
+		$post['status']=0;
+		unset($post['delete_Role_Data']);
+		$query=$this->user_model->updateData($id,$post,'role');
 		if($query==1)
 		{
 
-			$this->session->set_flashdata('insert_msg','USER ROLE INSERTED SUCCESSFULLY ');
-			redirect('role/showRole',$data);
+			$this->session->set_flashdata('delete_msg','User Role Deleted Successfully');
+			redirect('role/showRole');
 			die();
 
-		}
-
+		}//end of if
 
 	}//end of function
 
