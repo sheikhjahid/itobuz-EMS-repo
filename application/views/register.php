@@ -19,7 +19,18 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  
+  <style>
+
+    .drop{
+
+  background-color:grey;
+  border:none;
+  width:140px;
+  height:40px;
+  border-radius:5px;
+}
+
+</style>
   <body>
     <div class="header">
        <div class="container">
@@ -84,38 +95,33 @@
                               </br>
                               
                               <div class="form-group">
-                              <?php foreach($row as $value){ ?>
-                              <div class="btn-group">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Select Team <span class="caret"></span>
-                                </button>
-
-                               <ul class="dropdown-menu">
-                              
-                              <li>
-                              <?php echo $value->name; ?></li>
-                                
-                           </ul>
-
-                         </div>
-                         <?php } ?>
+                                <select class="drop">
+                                  <option value="0">Select Team</option>
+                              <?php foreach($team_list as $t){ ?>
+                                  <option value="<?php echo $t->id; ?>">
+                                    <?php echo ucwords($t->name); ?>
+                                  </option>
+                             
+                              <?php } ?>
+                                </select>
                          
-                       </div>
+                              </div>
+                              <div class="form-group">
+                                <select class="drop">
+                                  <option value="0">Select Role</option>
+                              <?php foreach($role_list as $r){ ?>
+                                  <option value="<?php echo $r->id; ?>">
+                                    <?php echo ucwords($r->name); ?>
+                                  </option>
+                             
+                              <?php } ?>
+                                </select>
+                         
+                              </div>
                         
                             </br>
                               </br>
-                              <div class="form-group">
                              
-                              <div class="btn-group">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 Select Role <span class="caret"></span>
-                                </button>
-                               <ul class="dropdown-menu">
-                              <li>  </li>
-                           </ul>
-                         </div>
-                        
-                       </div>
                               <button type="submit" class="btn">Register me!!</button>
                             </br>
                             </br>
@@ -132,22 +138,6 @@
     </div>
      </div>
 <div>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 
     <footer>
          <div class="container">

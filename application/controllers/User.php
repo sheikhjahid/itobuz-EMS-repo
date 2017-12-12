@@ -115,8 +115,8 @@ class user extends CI_Controller {
 		$data=array();
 		$data=$userdata;
 
-        $data['row']=$this->user_model->get_Data('team'); 
-
+        $data['team_list']=$this->user_model->get_Data('team'); 
+        $data['role_list']=$this->user_model->get_Data('role'); 
 		$this->load->view('register',$data);
 		
 		if($_SERVER['REQUEST_METHOD']=='POST')
