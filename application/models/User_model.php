@@ -116,5 +116,19 @@ class user_model extends CI_Model
   	return $query;
   }
 
+  public function get_Data($table)
+    {
+
+        $this->db->select('*');
+        $query = $this->db->get($table);
+            if ($query->num_rows >= 1)
+            {
+                
+              return $query->result();
+
+            }//end of if
+    }//end of function
+
+
 }//end of class
 ?>

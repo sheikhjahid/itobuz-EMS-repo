@@ -65,7 +65,7 @@
 
 	 			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">UPDATE ROLE PORTAL</div>
+					<div class="panel-title">Update Role</div>
 				</div>
   				<div class="panel-body">
   					<?php foreach($row as $value){ ?>
