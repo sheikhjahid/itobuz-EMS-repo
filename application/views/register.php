@@ -21,14 +21,17 @@
   </head>
   <style>
 
-    .drop{
+  .drop{
 
   background-color:grey;
   border:none;
-  width:140px;
+  width:180px;
   height:40px;
   border-radius:5px;
-}
+  position:absolute;
+  right:55%;
+
+}  
 
 </style>
   <body>
@@ -106,6 +109,10 @@
                                 </select>
                          
                               </div>
+
+                            </br>
+                          </br>
+
                               <div class="form-group">
                                 <select class="drop">
                                   <option value="0">Select Role</option>

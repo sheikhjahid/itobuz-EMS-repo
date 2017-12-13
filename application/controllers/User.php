@@ -133,8 +133,17 @@ class user extends CI_Controller {
 			}//end of  inner if
 		}//end of outer if
 
-		$password=md5($this->input->post('fullname'));
-		 $from_email = "your@example.com"; 
+		/*$password=md5($this->input->post('fullname'));*/
+		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $password_arr = array(); 
+        $alpha_length = strlen($alphabet) - 1; 
+        for ($i = 0; $i < 8; $i++) 
+        {
+        $n = rand(0, $alpha_length);
+        $password_arr = $alphabet[$n];
+        }
+         $password= implode(array($password_arr)); 
+		 $from_email = "jahid@itobuz.com"; 
          $to_email = $this->input->post('email'); 
    
          //Load email library 
@@ -177,7 +186,8 @@ class user extends CI_Controller {
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
-		$data['row']=$this->user_model->showData(1,'users');
+		/*$data['row']=$this->user_model->showData(1,'users');*/
+		$data['row']=$this->user_model->showInnerData();
 		$this->load->view('showUser',$data);
 
 	}//end of function

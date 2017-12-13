@@ -126,6 +126,17 @@ class user_model extends CI_Model
       }//end of if
   }//end of function
 
+  public function showInnerData()
+  {
+
+    $this->db->select('*');
+    $this->db->from('users'); // from Table1
+    $this->db->join('team','users.id = team.id','INNER'); // Join team-table with user-table based on the foreign key
+    $this->db->join('role','users.id = role.id','INNER'); // Join role table with user-table based on the foreign key
+    //$this->db->where('team.',2); // Set Filter
+    $query = $this->db->get();
+    return $query->result();
+  }
 
 }//end of class
 ?>

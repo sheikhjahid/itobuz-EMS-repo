@@ -12,6 +12,9 @@
     .wrapper{
   text-align: left;
 }
+
+
+
 .btn-default
 {
   top: 85%;
@@ -19,16 +22,6 @@
   position:absolute;
 
 }
-
-
-.drop{
-
-  background-color:grey;
-  border:none;
-  width:60px;
-  height:40px;
-}
-
 
 .form-top{
 
@@ -57,14 +50,26 @@ padding-bottom:0px;
 
 }
 
+.drop{
+
+  background-color:grey;
+  border:none;
+  width:180px;
+  height:40px;
+  border-radius:5px;
+  position:absolute;
+  right:55%;
+
+}
 
 
 .btn{
   right:10%;
-  bottom:15%;
+  bottom: 23%;
   position:absolute;
-  background-color:grey; 
+  background-color:grey;
 }
+
 p.groove
 {
   border-style:groove;
@@ -75,6 +80,7 @@ p.groove
 
 text-align:center;
 position:absolute;
+bottom:23%;
 right:29%;
 left:-201%;
 

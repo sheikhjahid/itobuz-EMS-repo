@@ -80,8 +80,8 @@
                 <th>PHONE</th>
                 <th>ADDRESS</th>
                 <th>EMAIL</th>
-                <th>TEAM ID</th>
-                <th>ROLE ID</th>
+                <th>TEAM NAME</th>
+                <th>ROLE NAME</th>
 								<th>ACTION</th>
 							</tr>
 						</thead>
