@@ -132,6 +132,9 @@
                               <button type="submit" class="btn">Register me!!</button>
                             </br>
                             </br>
+                              <a href="<?php echo base_url('user/register'); ?>" name="password">Generate Password => </a><?php  echo $password; ?>
+                            </br>
+                            </br>
                           </form>
                         </div>
                         </div> 
@@ -144,8 +147,31 @@
       </div>
     </div>
      </div>
-<div>
 
+
+
+<div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
     <footer>
          <div class="container">
          
@@ -157,7 +183,7 @@
 
       </footer>
   </div>
-
+</div>
       <link href="<?php echo base_url('/'); ?>public/css/dataTables.bootstrap.css" rel="stylesheet" media="screen">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

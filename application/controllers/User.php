@@ -115,6 +115,7 @@ class user extends CI_Controller {
 		$data=array();
 		$data=$userdata;
 
+		$data['password']=$this->user_model->generatePassword(8);
         $data['team_list']=$this->user_model->get_Data('team'); 
         $data['role_list']=$this->user_model->get_Data('role'); 
 		$this->load->view('register',$data);
@@ -127,22 +128,15 @@ class user extends CI_Controller {
 			$query=$this->user_model->insertData('users',$post);
 			if($query==1)
 			{
+				
 				$this->session->set_flashdata('insert_msg','USER REGISTERED SUCCESSFULLY');
 				redirect('user/showUserData',$data);
 				die();
+			
 			}//end of  inner if
 		}//end of outer if
 
-		/*$password=md5($this->input->post('fullname'));*/
-		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $password_arr = array(); 
-        $alpha_length = strlen($alphabet) - 1; 
-        for ($i = 0; $i < 8; $i++) 
-        {
-        $n = rand(0, $alpha_length);
-        $password_arr = $alphabet[$n];
-        }
-         $password= implode(array($password_arr)); 
+
 		 $from_email = "jahid@itobuz.com"; 
          $to_email = $this->input->post('email'); 
    
@@ -192,6 +186,14 @@ class user extends CI_Controller {
 
 	}//end of function
 
-	
+   /*public function showPassword()
+   {
 
-}//end of model class
+   	$data['password']=$this->user_model->generatePassword(8);
+
+   	$this->load->view('showPassword',$data);
+   
+   }*///end of function
+
+	
+}//end of controller class
