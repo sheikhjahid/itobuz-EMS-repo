@@ -51,7 +51,7 @@
           echo form_open('user/authentication', $attributes);
 
           ?>  
-          <h1>Login Form</h1>
+          <h1><center>Login Form</center></h1>
           <div style="margin-bottom: 25px" class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <?php
@@ -67,7 +67,7 @@
             echo form_input($data);
             ?>
           </div>
-        </br>
+        
       </br>
       <div style="margin-bottom: 25px" class="input-group">
        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -86,9 +86,6 @@
        ?>
      </div>
 
-
-
-
      <div style="margin-top:10px" class="form-group">
       <!-- Button -->
 
@@ -98,7 +95,7 @@
         $data1=array(
 
           'name' =>'submit',
-          'value'=>'SUBMIT TO REGISTER',
+          'value'=>'SUBMIT',
           'class'=>'btn btn-success',
 
         );

@@ -36,16 +36,12 @@ class user extends CI_Controller {
 	{
 		if(!$this->session->set_userdata('user_details'))
 		{
-
 		    $this->load->view("login");
-		
 		}
 		else
 		{
 			redirect('user/authentication');
 		}
-
-		
 	}
 
 	public function dashboard()
@@ -76,6 +72,8 @@ class user extends CI_Controller {
 		if(count($user_details))
 		{
 			$args['id']=$user_details->id;
+			$args['role_id']=$user_details->role_id;
+			$args['team_id']=$user_details->team_id;
 			$args['fullname']=$user_details->fullname;
 			$this->session->set_userdata('user_details',$args);
 
@@ -158,12 +156,12 @@ class user extends CI_Controller {
 		              {
 		              	$this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, Password has been emailed to the user");
 
-		              }
+		              }//end of if
 
 		              else
 		              {
 		              	$this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, !!Email was not sent to the user!! Password : ".$password);
-		              }
+		              }//end of else
 
 					redirect('user/showUserData',$data);
 					die();
@@ -173,14 +171,6 @@ class user extends CI_Controller {
         $data['team_list']=$this->user_model->get_Data('team'); 
         $data['role_list']=$this->user_model->get_Data('role'); 
 		$this->load->view('register',$data);
-
-       //email  code
-
-
-		
-
- 
-
 
 
 	}//end of function
@@ -200,20 +190,68 @@ class user extends CI_Controller {
 		$userdata=$this->session->userdata('user_details');
 		$data=array();
 		$data=$userdata;
-		/*$data['row']=$this->user_model->showData(1,'users');*/
-		$data['row']=$this->user_model->showData(1,'users');
+		
+		$data['row']=$this->user_model->showUserData(1,'users');
 		$this->load->view('showUser',$data);
 
 	}//end of function
 
-   /*public function showPassword()
-   {
+	public function viewUserData($id)
+	{
 
-   	$data['password']=$this->user_model->generatePassword(8);
+		if(!$this->session->userdata('user_details'))
+		{
 
-   	$this->load->view('showPassword',$data);
-   
-   }*///end of function
+			$this->session->set_flashhdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+			redirect('login');
+			die();
 
+		}//end  of if
+
+		$status=1;
+		$userdata=$this->session->userdata('user_details');
+		$data=array();
+		$data=$userdata;
+
+		$data['data']=$this->user_model->viewData($id,$status,'users');
+		$this->load->view('viewUser',$data);
+
+	}//end of  function
+
+	public function updateUserData($id)
+	{
+
+		if(!$this->session->userdata('user_details'))
+		{
+
+			$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+			redirect('login');
+			die();
+
+		}//end of if
+
+		$userdata=$this->session->userdata('user_details');
+		$data=array();
+		$data=$userdata;
+        $status=1;
+		$data['role_list']=$this->user_model->get_Data('role');
+		$data['team_list']=$this->user_model->get_Data('team');
+		$data['data']=$this->user_model->viewData($id,$status,'users');
+		$this->load->view('updateUser',$data);
+		
+		if($_SERVER['REQUEST_METHOD']=='POST')
+		{
+			$post=$this->input->post();
+			unset($post['updateData']);
+			$query=$this->user_model->updateData($id,$post,'users');
+			if($query==1)
+			{
+				$this->session->set_flashdata('update_msg','USER TEAM UPDATED SUCCESSFULLY ');
+				redirect('user/showUserData',$data);
+				die();
+			}
+		}
+
+     }//end of  function
 	
 }//end of controller class

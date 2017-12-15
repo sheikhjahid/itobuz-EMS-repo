@@ -113,13 +113,13 @@
                           <td><?php echo $value->phone; ?></td>
                           <td><?php echo $value->address; ?></td>
                           <td><?php echo $value->email; ?></td>
-                          <td><?php echo $value->team_id; ?></td>
-                          <td><?php echo $value->role_id; ?></td>
-                           <td><a href="<?php echo base_url('role/viewSpecificRole/').$value->id; ?>">
+                          <td><?php echo ucwords($value->team_name); ?></td>
+                          <td><?php echo ucwords($value->role_name); ?></td>
+                           <td><a href="<?php echo base_url('user/viewUserData/').$value->id; ?>">
                               <i class=" fa fa-eye" aria-hidden="true"></i>
                                </a>
 
-                            <a href="<?php echo base_url('role/updateRole/').$value->id; ?>"> 
+                            <a href="<?php echo base_url('user/updateUserData/').$value->id; ?>"> 
                             <i class="fa fa-edit" aria-hidden="true"></i>
                           </a>
                             <a href="<?php echo base_url('role/deleteRole/').$value->id; ?>" class="del-user" data-id="#">

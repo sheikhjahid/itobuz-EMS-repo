@@ -63,7 +63,7 @@ class user_model extends CI_Model
     		$this->db->select('*');
     		$this->db->where('id',$id);
     		$this->db->where('status',$status);
-    		$query=$this->db->get('team');
+    		$query=$this->db->get($table);
     		return $query->result();	
     	}
     	else
@@ -138,7 +138,20 @@ class user_model extends CI_Model
     return $query->result();
   }//end of function
 
- 
+      public function showUserData($status=1)
+      {
+          
+          $this->db->select('users.*,role.name as role_name,team.name as team_name');
+          $this->db->join('team', 'team.id = users.team_id');
+          $this->db->join('role', 'role.id = users.role_id');
+
+          if($status!='')
+          {
+            $this->db->where('users.status',$status);            
+          }
+          $query=$this->db->get('users');
+          return  $query->result();
+      }//end of function
 
 
 }//end of class
