@@ -36,7 +36,7 @@ class user extends CI_Controller {
 	{
 		if(!$this->session->set_userdata('user_details'))
 		{
-		    $this->load->view("login");
+		    $this->load->view("login-new");
 		}
 		else
 		{
@@ -246,7 +246,7 @@ class user extends CI_Controller {
 			$query=$this->user_model->updateData($id,$post,'users');
 			if($query==1)
 			{
-				$this->session->set_flashdata('update_msg','USER TEAM UPDATED SUCCESSFULLY ');
+				$this->session->set_flashdata('update_msg','USER DETAILS UPDATED SUCCESSFULLY ');
 				redirect('user/showUserData',$data);
 				die();
 			}
