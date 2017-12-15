@@ -72,6 +72,20 @@
                       }
                   ?>
 
+            <?php if($this->session->flashdata('email_msg')){ ?>
+
+            <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('email_msg'); ?></div>
+                  <?php
+                      }
+                  ?>
+                  <?php if($this->session->flashdata('error_email_msg')){ ?>
+
+                <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('error_email_msg'); ?></div>
+                  <?php
+                      }
+                  ?>
+
+
   					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 						<thead>
 							<tr>

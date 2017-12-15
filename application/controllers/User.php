@@ -115,52 +115,72 @@ class user extends CI_Controller {
 		$data=array();
 		$data=$userdata;
 
-		$data['password']=$this->user_model->generatePassword(8);
-        $data['team_list']=$this->user_model->get_Data('team'); 
-        $data['role_list']=$this->user_model->get_Data('role'); 
-		$this->load->view('register',$data);
+        
 		
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
 			$post=$this->input->post();
-			//unset($post['insert_Team_Data']);
+			$password=substr(strtolower(str_replace(' ','',$post['fullname'])),0,4);
+			$password=$password.'@$#'.rand(0,1000);
+			$post['password']=md5($password);
 
+
+			unset($post['insert_Team_Data']);
 			$query=$this->user_model->insertData('users',$post);
 			if($query==1)
 			{
 				
 				$this->session->set_flashdata('insert_msg','USER REGISTERED SUCCESSFULLY');
-				redirect('user/showUserData',$data);
-				die();
+				$config = Array(        
+			        'protocol' => 'smtp',
+			        'smtp_host' => 'ssl://smtp.googlemail.com',
+			        'smtp_port' => 465,
+			        'smtp_user' => 'jahid@itobuz.com',
+			        'smtp_pass' => 'jahid@123',
+			        'smtp_timeout' => '4',
+			        'mailtype'  => 'html', 
+			        'charset'   => 'iso-8859-1'
+			    );
+
+			        $this->load->library('email', $config);
+			        $this->email->set_newline("\r\n");
+
+			              
+
+			    	$message="<html><body><span>This is your password to access in to the portal: {$password}</span></body></html>";
+
+			        $this->email->from('jahid@itobuz.com','Your account has been created!!');
+			        $this->email->to($this->input->post['email']);
+			        $this->email->Subject('PASSWORD CREATION CONFIRMATION');
+			        $this->email->message($message);
+
+		              if($this->email->send())
+		              {
+		              	$this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, Password has been emailed to the user");
+
+		              }
+
+		              else
+		              {
+		              	$this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, !!Email was not sent to the user!! Password : ".$password);
+		              }
+
+					redirect('user/showUserData',$data);
+					die();
 			
 			}//end of  inner if
 		}//end of outer if
+        $data['team_list']=$this->user_model->get_Data('team'); 
+        $data['role_list']=$this->user_model->get_Data('role'); 
+		$this->load->view('register',$data);
+
+       //email  code
 
 
-		 $from_email = "jahid@itobuz.com"; 
-         $to_email = $this->input->post('email'); 
-   
-         //Load email library 
-         $this->load->library('email'); 
-   
-         $this->email->from($from_email, 'Your Name'); 
-         $this->email->to($to_email);
-         $this->email->subject('Password for log-in'); 
-         $this->email->message('Your password has been created for logging into your account'); 
-   
-         //Send mail 
-         if($this->email->send())
-         {
-         	$this->session->set_flashdata("email_sent","Email sent successfully.");	
-         } 
-          
-         else
-         {
+		
 
-         	$this->session->set_flashdata("email_sent","Error in sending Email.");	
-         } 
-          
-         //$this->load->view('email_form'); 
+ 
+
 
 
 	}//end of function
@@ -181,7 +201,7 @@ class user extends CI_Controller {
 		$data=array();
 		$data=$userdata;
 		/*$data['row']=$this->user_model->showData(1,'users');*/
-		$data['row']=$this->user_model->showInnerData();
+		$data['row']=$this->user_model->showData(1,'users');
 		$this->load->view('showUser',$data);
 
 	}//end of function

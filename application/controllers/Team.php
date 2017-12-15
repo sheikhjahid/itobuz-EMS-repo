@@ -68,7 +68,7 @@ class Team extends CI_Controller {
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
 			$post=$this->input->post();
-			unset($post['insert_Team_Data']);
+			//unset($post['insert_Team_Data']);
 			$query=$this->user_model->insertData('team',$post);
 			if($query==1)
 			{
