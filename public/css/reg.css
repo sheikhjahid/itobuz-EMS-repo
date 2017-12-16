@@ -1,0 +1,110 @@
+ <style>
+
+  .col-sm-5{
+font-size:17px;
+background-color: white;
+text-align:center;
+position:absolute;
+right:60%;
+left:25%;
+top:98%;
+width:530px;
+
+border:1px groove;
+padding-right:0px;
+padding-top:0px;
+padding-top:0px;
+padding-left:0px;
+padding-bottom:0px;
+}
+
+.fullname
+  {
+
+    position:absolute;
+    right:78%;
+    top:28%;
+  }
+  #form-fullname
+  {
+    position:absolute;
+    right:24.5%;
+    top:27%;
+    width:237px;
+  }
+  .email
+  {
+    position:absolute;
+    bottom:52%;
+    left:12%;
+  }
+  #form-email
+  {
+    position:absolute;
+    bottom:52%;
+    left:31%;
+    width:237px;
+  }
+
+.team
+  {
+
+    position:absolute;
+    bottom:37%;
+    right:77%;
+
+  }
+  .role
+  {
+    position:absolute;
+    left:4%;
+    bottom:22%;
+  }
+
+  .drop1 select{
+
+    background:green;
+
+
+  }
+
+.drop1{
+
+    background-color:white;
+    width:180px;
+    height:40px;
+    border-radius:5px;
+    position:absolute;
+    right:35%;
+    bottom:17%;
+    top:55%;
+
+  }
+
+  .drop2
+  {
+    background-color:white;
+    border-radius:5px;
+    width:180px;
+    height:40px;
+    position:absolute;
+    left:31%;
+    bottom:21%;
+  }
+
+  .btn{
+
+  right:38%;
+  bottom:5%;
+  position:absolute;
+  background-color:green;
+}
+.sign
+  {
+    position:absolute;
+    right:34%;
+    top:47%;
+  }
+  
+
+</style>

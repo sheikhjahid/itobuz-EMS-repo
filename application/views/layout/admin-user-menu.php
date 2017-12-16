@@ -1,6 +1,6 @@
 <li class="submenu">
                          <a href="#">
-                            <i class="fa fa-user"></i> Team <span class="caret pull-right"></span>
+                            <i class="fa fa-users"></i> Team <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
                          <ul>
@@ -25,7 +25,7 @@
                       <!--Sub-menu-->
                       <!--Sub menu-->
                       <ul>
-                            <li><a href="<?php echo base_url('user/showUserData'); ?>"><i class="fa fa-list"></i> Show User </a></li>
+                            <li><a href="<?php echo base_url('user/showUserData'); ?>"><i class="fa fa-list"></i> Show Users </a></li>
                   
                             <li><a href="<?php echo base_url('user/register'); ?>"><i class="fa fa-plus-circle"></i> Register User </a></li>
                   

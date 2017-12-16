@@ -1,6 +1,19 @@
+
+<style>
+
+.Brand
+{
+
+width:35px;
+position:absolute;
+top:23%;
+right:93%;
+}
+
+</style>
 <div class="col-md-5">
                 <div class="logo">
-                   <h1><a href="<?php echo base_url('user/dashboard'); ?>">ITOBUZ-EMS BLOG</a></h1>
+                   <h1><a class="navbar-brand" href="#"><img class="Brand" src="<?php echo base_url('/') ?>public/pics/itobuz.png"></a><a href="<?php echo base_url('user/dashboard'); ?>"> ITOBUZ-EMS BLOG</a></h1>
                 </div>
              </div>
              <div class="col-md-5">
