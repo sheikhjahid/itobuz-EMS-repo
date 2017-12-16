@@ -87,14 +87,23 @@
                   <span class="input-group-addon" id="basic-addon1"><i>FULLNAME</i></span>
                   <input type="text" class="form-control" placeholder="Change fullname name.." name="fullname" aria-describedby="basic-addon1" value="<?php echo $value->fullname; ?>"   >
                   </div>
+                  </br>
+                </br>
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><i>PHONE</i></span>
                   <input type="text" class="form-control" placeholder="Change your contact details.." name="phone" aria-describedby="basic-addon1" value="<?php echo $value->phone; ?>"   >
                   </div>
+                  </br>
+                </br>
                   <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1"><i>ADDRESS</i></span>
                   <input type="text" class="form-control" placeholder="Change your address details.." name="address" aria-describedby="basic-addon1" value="<?php echo $value->address; ?>"   >
                   </div>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
                 </br>
                 </br>
                  <div>

@@ -9,20 +9,19 @@ position:absolute;
 top:23%;
 right:93%;
 }
-
 </style>
 <div class="col-md-5">
                 <div class="logo">
-                   <h1><a class="navbar-brand" href="#"><img class="Brand" src="<?php echo base_url('/') ?>public/pics/itobuz.png"></a><a href="<?php echo base_url('user/dashboard'); ?>"> ITOBUZ-EMS BLOG</a></h1>
+                   <h1><a class="navbar-brand" href="http://www.itobuz.com"><img class="Brand" src="<?php echo base_url('/') ?>public/pics/itobuz.png"></a><a href="<?php echo base_url('user/dashboard'); ?>"> ITOBUZ-EMS BLOG</a></h1>
                 </div>
              </div>
              <div class="col-md-5">
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="input-group form">
-                         <input type="text" class="form-control" placeholder="Search...">
+                         <input type="text" class="form-control" placeholder="Search..." >
                          <span class="input-group-btn">
-                           <button class="btn btn-primary" type="button">Search</button>
+                           <button class="btn btn-primary" type="button" id="search">Search</button>
                          </span>
                     </div>
                   </div>

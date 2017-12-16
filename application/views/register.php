@@ -23,7 +23,7 @@
   </head>
   <style>
   input[type=submit] {
-  background-color: #4CAF50;
+  
   color: white;
   padding: 12px 20px;
   border: none;
@@ -122,7 +122,7 @@ right:9%;
     bottom:21%;
   }
 
-.btn{
+#register{
 
   width:180px;
   right:32%;
@@ -297,7 +297,7 @@ left:-201%;
     </div>
 
     <div>
-    <button type="submit" class="btn"> Register <i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
+    <button type="submit" class="btn" id="register"> Register <i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
   </div>
 
 

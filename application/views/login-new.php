@@ -15,6 +15,18 @@
   
 </head>
 
+<style>
+
+.alert
+{
+
+  font-size:10px;
+
+}
+
+
+</style>
+
 <body class="red">
 
 
@@ -41,7 +53,7 @@
 
                  <div class="alert">
                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                 <strong>Error : </strong><?php echo  $this->session->flashdata('login_error'); ?>
+                 <strong>Error : </strong><b><?php echo  $this->session->flashdata('login_error'); ?></b>
                  </div>
                   
                 </p>
