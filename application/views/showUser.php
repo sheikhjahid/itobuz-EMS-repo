@@ -122,7 +122,7 @@
                             <a href="<?php echo base_url('user/updateUserData/').$value->id; ?>"> 
                             <i class="fa fa-edit" aria-hidden="true"></i>
                           </a>
-                            <a href="<?php echo base_url('role/deleteRole/').$value->id; ?>" class="del-user" data-id="#">
+                            <a href="<?php echo base_url('user/deleteUser/').$value->id; ?>" class="del-user" data-id="#">
                             <i class="fa fa-trash" aria-hidden="true"  name="delete"></i>
                           </a>
                         </td>

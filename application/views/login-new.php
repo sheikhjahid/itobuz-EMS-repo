@@ -4,31 +4,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Login form using Material Design - Demo by W3lessons</title>
+  <title>Login-ITOBUZ-EMS.com</title>
   <!-- CORE CSS-->
   
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/materialize.min.css">
 
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/login.css">
 
 
-<style type="text/css">
-html,
-body {
-    height: 100%;
-}
-html {
-    display: table;
-    margin: auto;
-}
-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-.margin {
-  margin: 0 !important;
-}
-
-</style>
   
 </head>
 
@@ -46,7 +29,7 @@ body {
           ?>  
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="http://w3lessons.info/logo.png" alt="" class="responsive-img valign profile-image-login">
+            <img src="<?php echo base_url('/'); ?>public/pics/itobuz.png" alt="" class="responsive-img valign profile-image-login">
             <?php 
 
               if($this->session->flashdata('login_error'))
@@ -56,8 +39,11 @@ body {
                 
                 <p class="center login-form-text">
 
-                  <?php echo $this->session->flashdata('login_error'); ?>
-
+                 <div class="alert">
+                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                 <strong>Error : </strong><?php echo  $this->session->flashdata('login_error'); ?>
+                 </div>
+                  
                 </p>
                 <?php
                 
@@ -106,14 +92,6 @@ body {
             <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="register.html">Register Now!</a></p>
-          </div>
-          <div class="input-field col s6 m6 l6">
-              <p class="margin right-align medium-small"><a href="forgot-password.html">Forgot password?</a></p>
-          </div>          
-        </div> -->
 
       </form>
     </div>

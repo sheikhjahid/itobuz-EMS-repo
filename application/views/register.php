@@ -12,6 +12,9 @@
   <link href="<?php echo base_url('/'); ?>public/css/styles.css" rel="stylesheet">
   <link href="<?php echo base_url('/'); ?>public/css/font-awesome.css" rel="stylesheet">
   <link href="<?php echo base_url('/'); ?>public/css/registration.css" rel="stylesheet">
+
+  
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,7 +34,26 @@
     position:absolute;
     right:55%;
 
+  }
+
+  .logo
+  {
+
+    width:75px;
+    position:absolute;
+    right:45%;
+
   }  
+  .sign
+  {
+    position:absolute;
+    right:34%;
+  }
+  .foot
+  {
+    background-color:red; 
+  }
+
 
 </style>
 <body>
@@ -68,22 +90,32 @@
          </br>
          <div class="form-top">
           <div class="form-top-left">
-            <h3><b>Sign Up Form</b></h3>
-            <p>Fill in the form below to register user</p>
+            
+            <h1><center><img src="<?php echo base_url('/') ?>public/pics/itobuz.png" class="logo"></center></h1>
+          </br>
+          </br>
+          </br>
+            <h3 class="sign"><b><u><center>Sign Up Form</center></u></b></h3>
+           
           </div>
 
         </div>
 
         <div class="form-bottom">
           <form role="form" action="<?php echo base_url('user/register'); ?>" method="post" class="registration-form">
-
+          </br>
+          </br>
+          </br>
+          </br>
+          </br>
+          </br>
             <div class="form-group">
-              <label class="sr-only" for="form-full-name">Full Name</label>
-              <input type="text" name="fullname" placeholder="Enter your fullname here" class="form-fullname form-control" id="form-fullname">
+             <!--  <label class="sr-only" for="form-full-name">Full Name</label> -->
+              <label class="fullname">FullName </label> <input type="text" name="fullname" placeholder="Enter your fullname here" class="form-fullname form-control" id="form-fullname">
             </div>
             <div class="form-group">
-              <label class="sr-only" for="form-email">Email</label>
-              <input type="text" name="email" placeholder="Enter your email here" class="form-email form-control" id="form-email">
+              
+              <label class="email">Email</label> <input type="text" name="email" placeholder="Enter your email here" class="form-email form-control" id="form-email">
             </div>
           </br>
         </br>
@@ -119,11 +151,15 @@
 
 
     <button type="submit" class="btn">Register me!!</button>
+
+
+
   </br>
 </br>
 <!-- <?php  //echo $password; ?> -->
 </br>
 </br>
+<footer class="foot"><b> Itobuz.com@Copyright2017 </b></footer>
 </form>
 </div>
 </div> 

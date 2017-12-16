@@ -74,10 +74,6 @@
 		  	
 		  </div>
 
-
-
-
-
 		  <div class="col-md-10">
 
 	 			<div class="content-box-large">
@@ -99,42 +95,8 @@
                   <span class="input-group-addon" id="basic-addon1"><i>ADDRESS</i></span>
                   <input type="text" class="form-control" placeholder="Change your address details.." name="address" aria-describedby="basic-addon1" value="<?php echo $value->address; ?>"   >
                   </div>
-                  <div class="input-group">
-                  <span class="input-group-addon" id="basic-addon1"><i>EMAIL</i></span>
-                  <input type="text" class="form-control" placeholder="Chnage your email details.." name="email" aria-describedby="basic-addon1" value="<?php echo $value->email; ?>"   >
-                  </div>
-                  </br>
-                  </br>
-                  <div class="form-group">
-                  <select name="team_id" class="drop">
-                  <option value="0">Select Team</option>
-                  <?php foreach($team_list as $t){ ?>
-                  <option value="<?php echo $t->id; ?>">
-                  <?php echo ucwords($t->name); ?>
-                  </option>
-
-                  <?php } ?>
-                  </select>
-
-                  </div>
-                  </br>
-                  </br>
-                  <div class="form-group">
-                  <select name="role_id" class="drop">
-                  <option value="0">Select Role</option>
-                  <?php foreach($role_list as $r){ ?>
-                  <option value="<?php echo $r->id; ?>">
-                  <?php echo ucwords($r->name); ?>
-                  </option>
-
-                  <?php } ?>
-                  </select>
-
-                  </div>
-
-
                 </br>
-              </br>
+                </br>
                  <div>
                 <div class="wrapper">
               <input type="submit"  class="btn btn-default" value="UPDATE">

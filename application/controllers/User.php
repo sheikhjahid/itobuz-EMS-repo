@@ -249,9 +249,40 @@ class user extends CI_Controller {
 				$this->session->set_flashdata('update_msg','USER DETAILS UPDATED SUCCESSFULLY ');
 				redirect('user/showUserData',$data);
 				die();
-			}
-		}
+			}//end of inner if
+		}//end of outer  if
 
      }//end of  function
+
+     public function deleteUser($id)
+     {
+
+     	if(!$this->session->userdata('user_details'))
+     	{
+
+     		$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+			redirect('login');     		
+			die();
+
+     	}//end of if
+
+     	$userdata=$this->session->userdata('user_details');
+     	$data=array();
+     	$data=$userdata;
+
+     	$post=$this->input->post();
+     	$post['status']=0;
+     	unset($post['delete_User_Data']);
+     	$query=$this->user_model->updateData($id,$post,'users');
+     	if($query==1)
+     	{
+
+     		$this->session->set_flashdata('delete_msg','User Data Deleted Successfully');
+			redirect('user/showUserData');
+			die();     		
+
+     	}//end of if
+
+     }//end of function
 	
 }//end of controller class

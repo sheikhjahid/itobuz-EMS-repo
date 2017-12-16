@@ -153,6 +153,15 @@ class user_model extends CI_Model
           return  $query->result();
       }//end of function
 
+      public function delete_User_Data($id,$post)
+      {
+
+        $this->db->where('id',$id);
+        $query=$this->db->delete('users');
+        return $query;
+
+      }//end of function
+
 
 }//end of class
 ?>

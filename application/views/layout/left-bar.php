@@ -9,14 +9,10 @@
                         require_once 'admin-user-menu.php';
                       }
                     ?>
-                    <?php 
-
-                    if($role_id!=1)
-                    {
-                     ?>
+                   
                     
                     <li class="current"><a href="<?php echo base_url('user/updateUserdata/').$id; ?>"><i class="fa fa-pencil"></i> Update Profile</a></li>
-                    <?php } ?>
+                   
                     <li class="current"><a href="<?php echo base_url('logout'); ?>"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                     
 
