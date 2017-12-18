@@ -26,6 +26,22 @@
   background-color:blue;
   border-radius:0%;
 }
+.fa-instagram{
+
+size:70%;
+height: 11px;
+width: 11px;
+background:#125688; 
+color: pink;
+border-radius:100%;
+position:absolute;
+cursor:pointer;
+top:35%;
+right:20%;
+left:13%;
+bottom:45%;
+opacity:1.0;
+}
 .name
 {
 
@@ -38,11 +54,33 @@
   position:absolute;
   right:42%;
 }
+
+#fullname
+{
+  position:absolute;
+  left:26.3%;
+  top:-16655%;
+}
+
+#fullname1
+{
+  position:absolute;
+  left:36.0%;
+  top:-16655%;
+}
+
+.fullname
+{
+  position:absolute;
+  left:52%;
+  top:-5%;
+}
+
 #id
 {
 
 position:absolute;
-left:33%;
+left:31%;
 bottom:12320%;
 }
 #id1
@@ -51,11 +89,19 @@ bottom:12320%;
   left:36%;
   bottom:12320%;
 }
+
+.id
+{
+  position:absolute;
+  left:24%;
+  bottom:-23%;
+}
+
 #phone
 {
   position:absolute;
   bottom:9699%;
-  left:30.4%;
+  left:28.4%;
 }
 #phone1
 {
@@ -63,10 +109,16 @@ bottom:12320%;
  left:36%; 
  bottom:9699%;
 }
+.phone
+{
+  position:absolute;
+  left:40%;
+  bottom:-22%;
+}
 #address
 {
   position:absolute;
-  left:29.1%;
+  left:27.1%;
   bottom:6897%;
 }
 #address1
@@ -75,10 +127,16 @@ bottom:12320%;
   left:36%;
   bottom:6897%;
 }
+.address
+{
+  position:absolute;
+  left:48%;
+  top:2%;
+}
 #email
 {
   position:absolute;
-  left:31%;
+  left:28.9%;
   bottom:4220%;
 }
 #email1
@@ -87,10 +145,17 @@ bottom:12320%;
   left:36%;
   bottom:4220%;
 }
+.email
+{
+
+  position:absolute;
+  left:38%;
+  top:-7%;
+}
 #team
 {
   position:absolute;
-  left:31.4%;
+  left:29.4%;
   bottom:1097%;  
 }
 #team1
@@ -99,17 +164,29 @@ bottom:12320%;
   left:36%;
   bottom:1097%;
 }
+.team
+{
+  position:absolute;
+  left:35%;
+  top:-11%;
+}
 #role
 {
   position:absolute;
-  left:31.4%
-
+  left:29.4%
 }
 #role1
 {
  position:absolute;
  left:36%; 
 }
+.role
+{
+  position:absolute;
+  left:35%;
+  bottom:-17%;
+}
+
   </style>
   <body>
     <div class="header">
@@ -145,14 +222,26 @@ bottom:12320%;
           <div class="panel-body">
 
             <div class="container">
-          
+          <?php if($this->session->flashdata('upload_msg')) { ?>
+          <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('upload_msg'); ?></div>
+                  <?php
+                      }
+                  ?>
+          <?php if($this->session->flashdata('upload_error')){ ?>
+          <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('upload_error'); ?></div>
+                  <?php
+                      }
+                  ?>
           <!--profile code here-->
 
          <!--  <h2 style="text-align:center" class="profile"><b><u>User Profile Details</u></b></h2> -->
 
           <div class="card">
           <img src="<?php echo base_url('/'); ?>public/pics/dpadmin.jpg"   class="circle">
-          <p class="name"> <?php foreach($row as $value){  echo $value->fullname;  ?> </p>
+          <!-- <div><label><b>Upload your profile pictire</b></label></div> -->
+         
+
+          <p class="name"> <?php foreach($row as $value){    ?> </p>
         </br>
       </br>
     </br>
@@ -160,41 +249,46 @@ bottom:12320%;
 
           <div class="container">
         
-               
+       <div class="row">
+       <div class="col-md-12">
+       <div class="col-md-2" id="fullname"><b>FULLNAME  </b><center><label class="fullname">:</label></center></div>
+       <div class="col-md-10" id="fullname1"><?php echo $value->fullname; ?></div>
+       </div>
+       </div>         
     <div class="row">
   <div class="col-md-12"> 
   
-  <div class="col-md-2" id="id"><b>ID : </b></div>
+  <div class="col-md-2" id="id"><b>ID  </b><center><label class="id">:</label></center></div>
     <div class="col-md-10" id="id1"><?php echo $value->id;  ?></div>
   </div>
 </div>
     <div class="row">
     <div class="col-md-12">
-    <div class="col-md-2" id="phone"><b> PHONE : </b></div>
+    <div class="col-md-2" id="phone"><b> PHONE  </b><center><label class="phone">:</label></center></div>
     <div class="col-md-10" id="phone1"><?php echo $value->phone; ?></div>
   </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-    <div class="col-md-2" id="address"><b> ADDRESS : </b></div>
+    <div class="col-md-2" id="address"><b> ADDRESS  </b><center><label class="address">:</label></center></div>
     <div class="col-md-10" id="address1"><?php echo $value->address; ?></div>
   </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-    <div class="col-md-2" id="email"><b> EMAIL : </b></div>
+    <div class="col-md-2" id="email"><b> EMAIL  </b><center><label class="email">:</label></center></div>
     <div class="col-md-10" id="email1"><?php echo $value->email; ?></div>
   </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-    <div class="col-md-2" id="team"><b> TEAM : </b></div>
+    <div class="col-md-2" id="team"><b> TEAM  </b><center><label class="team">:</label></center></div>
     <div class="col-md-10" id="team1"><?php echo ucwords($value->team_name); ?></div>
   </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-    <div class="col-md-2" id="role"><b> ROLE : </b></div>
+    <div class="col-md-2" id="role"><b> ROLE  </b><center><label class="role">:</label></center></div>
     <div class="col-md-10" id="role1"><?php echo ucwords($value->role_name); ?></div>
   </div>
 </div>
