@@ -251,7 +251,7 @@ class user extends CI_Controller {
 				die();
 			}//end of inner if
 		}//end of outer  if
-
+		
      }//end of  function
 
      public function deleteUser($id)
@@ -282,6 +282,26 @@ class user extends CI_Controller {
 			die();     		
 
      	}//end of if
+
+     }//end of function
+
+     public function profile($id)
+     {
+
+     	if(!$this->session->userdata('user_details'))
+     	{
+     		$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+     		redirect('login');
+     		die();
+     	}
+     	$userdata=$this->session->userdata('user_details');
+     	$data=array();
+     	$data=$userdata;
+     	
+     	//$data['row']=$this->user_model->showUserData(1,'users');
+     	//$data['row1']=$this->user_model->viewData($id,$status,'users');
+     	$data['row']=$this->user_model->showProfileData($id,1,'users');
+     	$this->load->view('viewProfile',$data);
 
      }//end of function
 	

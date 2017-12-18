@@ -18,9 +18,11 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
+  
   <body>
   	<div class="header">
 	     <div class="container">
+
 	        <div class="row">
 	           <?php require_once 'layout/top-bar.php'; ?>
 	              <!-- Logo -->
@@ -29,6 +31,7 @@
 	</div>
 
     <div class="page-content">
+
     	<div class="row">
 		  <div class="col-md-2">
 
@@ -38,8 +41,11 @@
                      <!-- Sub menu -->
 		  	
 		  </div>
-		  <div class="col-md-10">
 
+     
+
+		  <div class="col-md-10">
+          
 	 			<div class="content-box-large">
   				<div class="panel-heading">
 					<div class="panel-title"><b><i><u>ROLE TABLE</i></b></u></div>

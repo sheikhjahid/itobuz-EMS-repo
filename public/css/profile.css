@@ -1,0 +1,95 @@
+<style>
+
+.circle
+{
+  height:90px;
+  width:90px;
+  background-color:blue;
+  border-radius:0%;
+}
+.name
+{
+
+  font-size:30px;
+  position:absolute;
+  right:82%;
+}
+.profile
+{
+  position:absolute;
+  right:42%;
+}
+#id
+{
+
+position:absolute;
+left:33%;
+bottom:12320%;
+}
+#id1
+{
+  position:absolute;
+  left:36%;
+  bottom:12320%;
+}
+#phone
+{
+  position:absolute;
+  bottom:9699%;
+  left:30.4%;
+}
+#phone1
+{
+ position:absolute;
+ left:36%; 
+ bottom:9699%;
+}
+#address
+{
+  position:absolute;
+  left:29.1%;
+  bottom:6897%;
+}
+#address1
+{
+  position:absolute;
+  left:36%;
+  bottom:6897%;
+}
+#email
+{
+  position:absolute;
+  left:31%;
+  bottom:4220%;
+}
+#email1
+{
+  position:absolute;
+  left:36%;
+  bottom:4220%;
+}
+#team
+{
+  position:absolute;
+  left:31.4%;
+  bottom:1097%;  
+}
+#team1
+{
+  position:absolute;
+  left:36%;
+  bottom:1097%;
+}
+#role
+{
+  position:absolute;
+  left:31.4%
+
+}
+#role1
+{
+ position:absolute;
+ left:36%; 
+}
+
+</style>
