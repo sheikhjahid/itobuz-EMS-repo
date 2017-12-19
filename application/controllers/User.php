@@ -308,20 +308,21 @@ class user extends CI_Controller {
 	
    public function showSearch()
    {
+   	
    	if(!$this->session->userdata('user_details'))
    	{
    		$this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
    		redirect('login');
    		die();
-
    	}
-   	$userdata=$this->session->userdata('uer_details');
-   	$data=array();
-   	$data=$userdata;
+   $userdata=$this->session->userdata('user_details');
+   $data=array();
+   $data=$userdata;
 
    $data['row']=$this->user_model->search();
- 	print_r($data);
- 	die();
+   $this->load->view('showSearch',$data);
+ 	/*print_r($data);
+ 	die();*/
    }//end of function
    
 }//end of controller class

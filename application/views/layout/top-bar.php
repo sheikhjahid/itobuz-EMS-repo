@@ -30,6 +30,7 @@ right:93%;
                   </div>
                 </div>
              </div>
+             
              <div class="col-md-2">
                 <div class="navbar navbar-inverse" role="banner">
                     <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -46,3 +47,4 @@ right:93%;
                     </nav>
                 </div>
              </div>
+            

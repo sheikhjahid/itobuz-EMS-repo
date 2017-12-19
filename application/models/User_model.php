@@ -23,7 +23,7 @@ class user_model extends CI_Model
 		}
 		$this->logUser($username,$status);
 		return $result[0];
-    }//end of function
+  }//end of function
 
     private function logUser($email,$status)
     {
