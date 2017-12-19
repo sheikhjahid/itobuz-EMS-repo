@@ -247,10 +247,11 @@ class user extends CI_Controller {
 			if($query==1)
 			{
 				$this->session->set_flashdata('update_msg','USER DETAILS UPDATED SUCCESSFULLY ');
-				redirect('user/showUserData',$data);
+				redirect('user/dashboard',$data);
 				die();
 			}//end of inner if
 		}//end of outer  if
+		
 		
      }//end of  function
 
@@ -305,6 +306,6 @@ class user extends CI_Controller {
 
      }//end of function
 	
-    
-
+   
+   
 }//end of controller class

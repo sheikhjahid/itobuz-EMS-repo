@@ -11,7 +11,7 @@
                     ?>
                    
                     
-                    <li class="current"><a href="<?php echo base_url('user/updateUserdata/').$id; ?>"><i class="fa fa-pencil"></i> Update Profile</a></li>
+                    <li class="current"><a href="<?php echo base_url('user/updateUserData/').$id; ?>"><i class="fa fa-pencil"></i> Update Profile</a></li>
                    
                     <li class="current"><a href="<?php echo base_url('logout'); ?>"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                     

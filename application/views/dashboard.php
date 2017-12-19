@@ -32,6 +32,12 @@
       <div class="col-md-2">
         <?php require_once 'layout/left-bar.php'; ?>
       </div>
+        <?php
+          if($this->session->flashdata('update_msg'))
+          { 
+         echo'<script language="javascript">';
+                echo 'alert("User Details Updated details successfully!!")';
+                echo '</script>';}?>
       <div class="col-md-10">
         <div class="row">
           <div class="col-md-6">

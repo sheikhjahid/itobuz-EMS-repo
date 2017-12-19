@@ -74,13 +74,6 @@
 		  	
 		  </div>
 
-      <?php if($this->session->flashdata('update_msg1')) { ?>
-      <div class="alert alert-danger" role="alert">
-
-        <?php echo $this->session->flashdata('update_msg1'); ?>
-
-      </div>
-      <?php } ?>
 		  <div class="col-md-10">
 
 	 			<div class="content-box-large">
