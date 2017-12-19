@@ -19,11 +19,13 @@ right:93%;
              <div class="col-md-5">
                 <div class="row">
                   <div class="col-lg-12">
+                    <form action="<?php echo base_url('user/showSearch'); ?>" method="post">
                     <div class="input-group form">
-                         <input type="text" class="form-control" placeholder="Search..." >
+                         <input type="text" class="form-control" placeholder="Search by fullname,phone,email.." name="keyword" >
                          <span class="input-group-btn">
-                           <button class="btn btn-primary" type="button" id="search">Search</button>
+                           <button class="btn btn-primary" type="submit" id="search">Search</button>
                          </span>
+                       </form>
                     </div>
                   </div>
                 </div>

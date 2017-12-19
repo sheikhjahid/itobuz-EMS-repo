@@ -180,6 +180,15 @@ class user_model extends CI_Model
           return  $query->result();
       }//end of function
 
+      public function search()
+      {
+        $keyword=$this->input->post('keyword');
+        $this->db->like('fullname',$keyword);
+        $this->db->or_like('phone',$keyword);
+        $this->db->or_like('email',$keyword);
+        $query=$this->db->get('users');
+        return $query->result();
+      }//end of function
 
 }//end of class
 ?>
