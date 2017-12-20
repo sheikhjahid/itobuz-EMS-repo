@@ -1,0 +1,44 @@
+ <style>
+ .circle
+ {
+  text-align:center;
+  height:110px;
+  width:110px;
+  border-radius:50%;
+  position:absolute;
+  right:50%;
+  top:23%;
+ }
+ .fa-instagram{
+
+size:70%;
+height: 11px;
+width: 11px;
+background:blue; 
+color:pink;
+border-radius:100%;
+position:absolute;
+cursor:pointer;
+top:50%;
+right:52%;
+left:50%;
+bottom:45%;
+opacity:1.0;
+}
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 2px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width:18%;
+    font-size: 18px;
+    position:absolute;
+    bottom:23%;
+    left:37%;
+}
+
+  </style>

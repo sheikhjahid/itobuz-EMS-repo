@@ -190,5 +190,28 @@ class user_model extends CI_Model
         return $query->result();
       }//end of function
 
+      public function insertPicture($table,$field)
+      {
+
+    $this->db->trans_start();
+    $this->db->insert('user-image', $field);
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === TRUE)
+    {
+        
+        return $query->result(); 
+    }//end of  if
+    
+    }//end of function
+
+      public function showPicture($table)
+      {
+        $this->db->select('user-image.*','image_path as profile_image');
+        $this->db->join('users','users.id = user-image.user_id');
+        $query=$this->db->get($table);
+        return $query->result();
+      }//end of function
+
 }//end of class
 ?>

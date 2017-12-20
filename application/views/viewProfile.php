@@ -26,22 +26,6 @@
   background-color:blue;
   border-radius:0%;
 }
-.fa-instagram{
-
-size:70%;
-height: 11px;
-width: 11px;
-background:#125688; 
-color: pink;
-border-radius:100%;
-position:absolute;
-cursor:pointer;
-top:35%;
-right:20%;
-left:13%;
-bottom:45%;
-opacity:1.0;
-}
 .name
 {
 

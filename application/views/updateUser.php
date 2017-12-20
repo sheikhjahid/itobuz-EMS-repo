@@ -78,7 +78,7 @@
 
 	 			<div class="content-box-large">
   				<div class="panel-heading">
-					<div class="panel-title">Update Role</div>
+					<div class="panel-title"><b>Update Your Details</b></div>
 				</div>
   				<div class="panel-body">
   					<?php foreach($data as $value){ ?>
