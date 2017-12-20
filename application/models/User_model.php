@@ -190,20 +190,16 @@ class user_model extends CI_Model
         return $query->result();
       }//end of function
 
-      public function insertPicture($table,$field)
+      public function insertPicture($field)
       {
 
-    $this->db->trans_start();
-    $this->db->insert('user-image', $field);
-    $this->db->trans_complete();
-
-    if ($this->db->trans_status() === TRUE)
-    {
+        $query=$this->db->insert('user-image',$field);
         
-        return $query->result(); 
-    }//end of  if
-    
-    }//end of function
+        /*echo  $this->db->last_query();
+        die();*/
+        return $query;
+        
+      }//end of function
 
       public function showPicture($table)
       {

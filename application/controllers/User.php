@@ -373,13 +373,19 @@ class user extends CI_Controller {
             die();
         }           
         else {
-            $this->session->set_flashdata('upload_msg','uploaded with success');
+            /*$this->session->set_flashdata('upload_msg','uploaded with success');*/
             $data['upload_data']= $this->upload->data(); 
             $zfile = $data['upload_data']['full_path']; 
             $field['image_path']=basename($zfile);
             chmod($zfile,0777);
-            $this->user_model->insertPicture('user-image',$field);
-            redirect('user/viewUpload/'.$userdata['username'], $data); 
+            $query=$this->user_model->insertPicture($field);
+            if($query==1)
+            {
+
+            $this->session->set_flashdata('upload_msg','PICTURE UPLOADED SUCCESSFULLY');    
+            redirect('user/viewUpload/'.$userdata['username'], $data['row']); 
+             die();
+            }
         }
 
    }//end of function
