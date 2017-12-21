@@ -27,14 +27,15 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <?php 
+            <?php
               if($user_image!='')
               {
             ?>  
             <img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $user_image->image_path; ?>" style="width:23%;border-radius: 50%" />
             <?php 
               }
-              else
+            
+              else 
               {
             ?>
               <i class="glyphicon glyphicon-user"></i>

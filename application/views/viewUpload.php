@@ -55,7 +55,9 @@
                       }
                   ?>
           <!--upload code here-->
-            
+          
+          <center><p><label class="upl-head" style="position:absolute;top:11%;left:39%"><u><b>UPLOAD YOUR PICTURE</b></u></label></p></left></center>
+
        <?php echo form_open_multipart('user/doUpload');?>
     
       <input type="file" name="userfile"  height="20px" size="30px"  class="fa fa-instagram">
@@ -63,7 +65,8 @@
   </br>
    
 <!-- <p class="upl"><?php //echo anchor('upload', 'Upload Your Profile Picture'); ?></p> -->
-    <br><p><input type="submit" value="UPLOAD" name="upload" class="button"></p></br>
+
+    <div><br><p><input type="submit" value="UPLOAD" name="upload" class="button"></p></br></div>
     </form>
    <center><img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $imgpath->image_path; ?>" class="circle" style="text-align:center;height:120px;width:120px;border-radius:50%;position:absolute;right:50%;top:23%" ></center>
    

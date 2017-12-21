@@ -330,6 +330,15 @@ class user extends CI_Controller {
    $data=$userdata;
 
    $data['row']=$this->user_model->search();
+
+   $id=$userdata['id'];
+   if($this->user_model->showPicture($id))
+   {
+
+    $args['user_image']=$this->user_model->showPicture($id);
+
+   }
+
    $this->load->view('showSearch',$data);
     /*print_r($data);
     die();*/

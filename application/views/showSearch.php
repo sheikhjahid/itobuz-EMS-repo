@@ -65,6 +65,9 @@
 												<div class="col-md-6">
 												</br>
 												</br>
+												<?php if($user_image!=' '){?>
+												<img src="<?php echo base_url('/'); ?>public/pics/<?php echo $user_image->image_path; ?>" style="width:23%;position:absolute;left:37%;top:-2%">
+												<?php } ?>
 														<div><b>ID : <?php echo $r->id; ?></b></div>
 														<div><b>FULLNAME : <?php echo $r->fullname; ?></b></div>
 														<div><b>PHONE : <?php echo $r->phone; ?></b></div>
