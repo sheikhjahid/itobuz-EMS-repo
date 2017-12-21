@@ -9,22 +9,6 @@
   right:50%;
   top:23%;
  }
- .fa-instagram{
-
-size:70%;
-height: 11px;
-width: 11px;
-background:blue; 
-color:pink;
-border-radius:100%;
-position:absolute;
-cursor:pointer;
-top:70%;
-right:47%;
-left:48.7%;
-bottom:48%;
-opacity:none;
-}
 .button {
     border: none;
     outline: 0;

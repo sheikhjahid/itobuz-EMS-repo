@@ -34,8 +34,8 @@
             <img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $user_image->image_path; ?>" style="width:23%;border-radius: 50%" />
             <?php 
               }
-            
-              else 
+           
+              else
               {
             ?>
               <i class="glyphicon glyphicon-user"></i>
@@ -50,6 +50,6 @@
             </ul>
           </li>
         </ul>
-      </nav>
+      </nav> 
     </div>
   </div>

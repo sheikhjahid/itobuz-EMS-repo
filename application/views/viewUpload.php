@@ -19,7 +19,24 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-   
+   <style>
+   .fa-instagram{
+
+size:70%;
+height: 11px;
+width: 11px;
+background:blue; 
+color:pink;
+border-radius:100%;
+position:absolute;
+cursor:pointer;
+top:74%;
+right:47%;
+left:50%;
+bottom:46%;
+opacity:none;
+}
+ </style>
   <body>
     <div class="header">
        <div class="container">
@@ -50,17 +67,18 @@
 
             <div class="container">
           <?php if($this->session->flashdata('upload_msg')) { ?>
-          <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('upload_msg'); ?></div>
+          <div class="alert alert-warning alert-dismissible fade in" role="alert" id="message" style="border-margin:12px;background-color:orange"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><?php echo $this->session->flashdata('upload_msg'); ?></div>
                   <?php
                       }
                   ?>
           <!--upload code here-->
           
-          <center><p><label class="upl-head" style="position:absolute;top:11%;left:39%"><u><b>UPLOAD YOUR PICTURE</b></u></label></p></left></center>
+          <center><p><label class="upl-head" style="position:absolute;top:11%;left:38%"><u><b>UPLOAD YOUR PICTURE</b></u></label></p></left></center>
 
        <?php echo form_open_multipart('user/doUpload');?>
     
-      <input type="file" name="userfile"  height="20px" size="30px"  class="fa fa-instagram">
+      <input type="file" name="userfile"  height="20px" size="30px"  class="fa fa-instagram" style="size:70%;height: 11px;width: 11px;background:blue; color:pink;border-radius:100%;position:absolute;cursor:pointer;top:74%;right:47%;left:50%;bottom:46%;opacity:none">
+
     </br>
   </br>
    
@@ -68,7 +86,7 @@
 
     <div><br><p><input type="submit" value="UPLOAD" name="upload" class="button"></p></br></div>
     </form>
-   <center><img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $imgpath->image_path; ?>" class="circle" style="text-align:center;height:120px;width:120px;border-radius:50%;position:absolute;right:50%;top:23%" ></center>
+   <center><img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $imgpath->image_path; ?>" class="circle" style="text-align:center;height:120px;width:120px;border-radius:0%;position:absolute;right:50%;top:23%" ></center>
    
           <!--end  of upload code-->
     

@@ -208,6 +208,10 @@ class user_model extends CI_Model
         $result=$query->result();
         return $result[0];
       }//end of function
+      public function showPictureById($id)
+      {
+        
+      }//end of function
 
 }//end of class
 ?>
