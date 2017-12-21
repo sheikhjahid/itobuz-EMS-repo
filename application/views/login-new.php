@@ -41,7 +41,7 @@
           ?>  
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="<?php echo base_url('/'); ?>public/pics/itobuz.png" alt="" class="responsive-img valign profile-image-login">
+            <img src="<?php echo base_url('/'); ?>public/pics/itobuz.png" alt="" class="responsive-img valign profile-image-login" style="width:60%">
             <?php 
 
               if($this->session->flashdata('login_error'))

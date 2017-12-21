@@ -75,6 +75,10 @@ class user extends CI_Controller {
             $args['role_id']=$user_details->role_id;
             $args['team_id']=$user_details->team_id;
             $args['fullname']=$user_details->fullname;
+            if($this->user_model->showPicture($user_details->id))
+            {
+                $args['user_image']=$this->user_model->showPicture($user_details->id);
+            }
             $this->session->set_userdata('user_details',$args);
 
             redirect('user/dashboard');
@@ -301,7 +305,13 @@ class user extends CI_Controller {
         
         //$data['row']=$this->user_model->showUserData(1,'users');
         //$data['row1']=$this->user_model->viewData($id,$status,'users');
+        if($this->user_model->showPicture($id))
+        {
+            $args['user_image']=$this->user_model->showPicture($id);
+        }//end of if
+
         $data['row']=$this->user_model->showProfileData($id,1,'users');
+
         $this->load->view('viewProfile',$data);
 
      }//end of function
@@ -337,7 +347,12 @@ class user extends CI_Controller {
     $userdata=$this->session->userdata('user_details');
     $data=array();
     $data=$userdata;
-    $data['row']=$this->user_model->showPicture('user-image');
+    $data['imgpath']=$this->user_model->showPicture($userdata['id']);
+
+    // echo '<pre>';
+    // print_r($data['imgpath']);
+    // die();
+
     $this->load->view('viewUpload',$data);
 }
 
@@ -360,33 +375,31 @@ class user extends CI_Controller {
          $config['max_size']      = '100'; 
          $config['max_width']     = '1024'; 
          $config['max_height']    = '768';  
-         $config['file_name']    = $userdata['fullname'].'_profile';  
+         $config['file_name']     = $userdata['fullname'].'_profile';  
          $this->load->library('upload', $config);
             
         if ( ! $this->upload->do_upload('userfile')) 
         {
-
-            /*$error = array('error' => $this->upload->display_errors()); 
-            $data['error']=$error;*/
             $this->session->set_flashdata('upload_error',$this->upload->display_errors());            
             redirect('user/UploadError', $data); 
             die();
         }           
-        else {
-            /*$this->session->set_flashdata('upload_msg','uploaded with success');*/
-            $data['upload_data']= $this->upload->data(); 
-            $zfile = $data['upload_data']['full_path']; 
-            $field['image_path']=basename($zfile);
-            chmod($zfile,0777);
-            $query=$this->user_model->insertPicture($field);
-            if($query==1)
+        else 
+        {
+            if($_SERVER['REQUEST_METHOD']=="POST")
             {
+                $data['upload_data']= $this->upload->data(); 
+                $zfile = $data['upload_data']['full_path']; 
+                $field['user_id']=$userdata['id'];
+                $field['image_path']=basename($zfile);
+                chmod($zfile,0777);
+                $data['imgpath']=$this->user_model->insertData('user-image',$field);
+            }                     
+            $this->session->set_flashdata('upload_msg','PICTURE UPLOADED SUCCESSFULLY'); 
+            redirect('user/UploadPage'); 
+            die();
 
-            $this->session->set_flashdata('upload_msg','PICTURE UPLOADED SUCCESSFULLY');    
-            redirect('user/viewUpload/'.$userdata['username'], $data['row']); 
-             die();
-            }
-        }
+        }//end of else
 
    }//end of function
    

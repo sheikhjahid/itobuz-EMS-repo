@@ -11,7 +11,7 @@
     <!-- styles -->
     <link href="<?php echo base_url('/'); ?>public/css/styles.css" rel="stylesheet">
     <link href="<?php echo base_url('/'); ?>public/css/font-awesome.css" rel="stylesheet">
-
+    <link href="<?php echo base_url('/'); ?>public/css/upload.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -19,56 +19,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-   <style>
- .circle
- {
-  text-align:center;
-  height:120px;
-  width:120px;
-  border-radius:100%;
-  position:absolute;
-  right:50%;
-  top:23%;
- }
- .fa-instagram{
-
-size:70%;
-height: 11px;
-width: 11px;
-background:blue; 
-color:pink;
-border-radius:100%;
-position:absolute;
-cursor:pointer;
-top:50%;
-right:47%;
-left:49.5%;
-bottom:45%;
-opacity:1.0;
-}
-.button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 2px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width:18%;
-    font-size: 18px;
-    position:absolute;
-    bottom:23%;
-    left:37%;
-}
-.upl
-{
-  position:absolute;
-  left:38%;
-  bottom:77%;
-}
-
-  </style>
+   
   <body>
     <div class="header">
        <div class="container">
@@ -84,12 +35,7 @@ opacity:1.0;
 
       <div class="row">
       <div class="col-md-2">
-
-        <?php require_once 'layout/left-bar.php'; ?>
-                    <!-- Main menu -->
-
-                     <!-- Sub menu -->
-        
+        <?php require_once 'layout/left-bar.php'; ?>        
       </div>
 
      
@@ -116,18 +62,11 @@ opacity:1.0;
     </br>
   </br>
    
-<p class="upl"><?php echo anchor('upload', 'Upload Your Profile Picture'); ?></p>
+<!-- <p class="upl"><?php //echo anchor('upload', 'Upload Your Profile Picture'); ?></p> -->
     <br><p><input type="submit" value="UPLOAD" name="upload" class="button"></p></br>
     </form>
-    <?php foreach($row as $value){ ?>
-   <center><img src="<?php echo $value->$profile_image;?>" class="circle" ></img></center>
-   <?php } ?>
-   </br>
-   </br>
-   </br>
-   </br>
-   </br>
-   </br>
+   <center><img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $imgpath->image_path; ?>" class="circle" style="text-align:center;height:120px;width:120px;border-radius:50%;position:absolute;right:50%;top:23%" ></center>
+   
           <!--end  of upload code-->
     
           </div>

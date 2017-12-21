@@ -194,19 +194,19 @@ class user_model extends CI_Model
       {
 
         $query=$this->db->insert('user-image',$field);
-        
-        /*echo  $this->db->last_query();
-        die();*/
         return $query;
         
       }//end of function
 
-      public function showPicture($table)
+      public function showPicture($user_id)
       {
-        $this->db->select('user-image.*','image_path as profile_image');
-        $this->db->join('users','users.id = user-image.user_id');
-        $query=$this->db->get($table);
-        return $query->result();
+        $this->db->select('image_path');
+        $this->db->where('user-image.user_id',$user_id);
+        $this->db->order_by('user-image.id', 'DESC');
+        $this->db->limit(1);
+        $query=$this->db->get('user-image');
+        $result=$query->result();
+        return $result[0];
       }//end of function
 
 }//end of class

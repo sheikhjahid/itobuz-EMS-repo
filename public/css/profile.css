@@ -1,5 +1,3 @@
-<style>
-
 .circle
 {
   height:90px;
@@ -19,11 +17,33 @@
   position:absolute;
   right:42%;
 }
+
+#fullname
+{
+  position:absolute;
+  left:26.3%;
+  top:-16655%;
+}
+
+#fullname1
+{
+  position:absolute;
+  left:36.0%;
+  top:-16655%;
+}
+
+.fullname
+{
+  position:absolute;
+  left:52%;
+  top:-5%;
+}
+
 #id
 {
 
 position:absolute;
-left:33%;
+left:31%;
 bottom:12320%;
 }
 #id1
@@ -32,11 +52,19 @@ bottom:12320%;
   left:36%;
   bottom:12320%;
 }
+
+.id
+{
+  position:absolute;
+  left:24%;
+  bottom:-23%;
+}
+
 #phone
 {
   position:absolute;
   bottom:9699%;
-  left:30.4%;
+  left:28.4%;
 }
 #phone1
 {
@@ -44,10 +72,16 @@ bottom:12320%;
  left:36%; 
  bottom:9699%;
 }
+.phone
+{
+  position:absolute;
+  left:40%;
+  bottom:-22%;
+}
 #address
 {
   position:absolute;
-  left:29.1%;
+  left:27.1%;
   bottom:6897%;
 }
 #address1
@@ -56,10 +90,16 @@ bottom:12320%;
   left:36%;
   bottom:6897%;
 }
+.address
+{
+  position:absolute;
+  left:48%;
+  top:2%;
+}
 #email
 {
   position:absolute;
-  left:31%;
+  left:28.9%;
   bottom:4220%;
 }
 #email1
@@ -68,10 +108,17 @@ bottom:12320%;
   left:36%;
   bottom:4220%;
 }
+.email
+{
+
+  position:absolute;
+  left:38%;
+  top:-7%;
+}
 #team
 {
   position:absolute;
-  left:31.4%;
+  left:29.4%;
   bottom:1097%;  
 }
 #team1
@@ -80,16 +127,25 @@ bottom:12320%;
   left:36%;
   bottom:1097%;
 }
+.team
+{
+  position:absolute;
+  left:35%;
+  top:-11%;
+}
 #role
 {
   position:absolute;
-  left:31.4%
-
+  left:29.4%
 }
 #role1
 {
  position:absolute;
  left:36%; 
 }
-
-</style>
+.role
+{
+  position:absolute;
+  left:35%;
+  bottom:-17%;
+}

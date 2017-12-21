@@ -11,6 +11,7 @@
     <!-- styles -->
     <link href="<?php echo base_url('/'); ?>public/css/styles.css" rel="stylesheet">
     <link href="<?php echo base_url('/'); ?>public/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo base_url('/'); ?>public/css/profile.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,160 +19,9 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style>
-  .circle
-{
-  height:90px;
-  width:90px;
-  background-color:blue;
-  border-radius:0%;
-}
-.name
-{
-
-  font-size:30px;
-  position:absolute;
-  right:82%;
-}
-.profile
-{
-  position:absolute;
-  right:42%;
-}
-
-#fullname
-{
-  position:absolute;
-  left:26.3%;
-  top:-16655%;
-}
-
-#fullname1
-{
-  position:absolute;
-  left:36.0%;
-  top:-16655%;
-}
-
-.fullname
-{
-  position:absolute;
-  left:52%;
-  top:-5%;
-}
-
-#id
-{
-
-position:absolute;
-left:31%;
-bottom:12320%;
-}
-#id1
-{
-  position:absolute;
-  left:36%;
-  bottom:12320%;
-}
-
-.id
-{
-  position:absolute;
-  left:24%;
-  bottom:-23%;
-}
-
-#phone
-{
-  position:absolute;
-  bottom:9699%;
-  left:28.4%;
-}
-#phone1
-{
- position:absolute;
- left:36%; 
- bottom:9699%;
-}
-.phone
-{
-  position:absolute;
-  left:40%;
-  bottom:-22%;
-}
-#address
-{
-  position:absolute;
-  left:27.1%;
-  bottom:6897%;
-}
-#address1
-{
-  position:absolute;
-  left:36%;
-  bottom:6897%;
-}
-.address
-{
-  position:absolute;
-  left:48%;
-  top:2%;
-}
-#email
-{
-  position:absolute;
-  left:28.9%;
-  bottom:4220%;
-}
-#email1
-{
-  position:absolute;
-  left:36%;
-  bottom:4220%;
-}
-.email
-{
-
-  position:absolute;
-  left:38%;
-  top:-7%;
-}
-#team
-{
-  position:absolute;
-  left:29.4%;
-  bottom:1097%;  
-}
-#team1
-{
-  position:absolute;
-  left:36%;
-  bottom:1097%;
-}
-.team
-{
-  position:absolute;
-  left:35%;
-  top:-11%;
-}
-#role
-{
-  position:absolute;
-  left:29.4%
-}
-#role1
-{
- position:absolute;
- left:36%; 
-}
-.role
-{
-  position:absolute;
-  left:35%;
-  bottom:-17%;
-}
-
-  </style>
+  
+  
+  
   <body>
     <div class="header">
        <div class="container">
@@ -221,7 +71,9 @@ bottom:12320%;
          <!--  <h2 style="text-align:center" class="profile"><b><u>User Profile Details</u></b></h2> -->
 
           <div class="card">
-          <img src="<?php echo base_url('/'); ?>public/pics/dpadmin.jpg"   class="circle">
+            <?php if($user_image!=''){ ?>
+          <img src="<?php echo base_url('/'); ?>public/pics/<?php echo $user_image->image_path; ?>" class="circle">
+          <?php } ?>
           <!-- <div><label><b>Upload your profile pictire</b></label></div> -->
          
 
