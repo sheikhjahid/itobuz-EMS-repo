@@ -303,14 +303,16 @@ class user extends CI_Controller {
         $data=array();
         $data=$userdata;
         
-        //$data['row']=$this->user_model->showUserData(1,'users');
-        //$data['row1']=$this->user_model->viewData($id,$status,'users');
         if($this->user_model->showPicture($id))
         {
-            $args['user_image']=$this->user_model->showPicture($id);
-        }//end of if
+            $data['profile']=$this->user_model->showPicture($id);
+        }
 
+        
         $data['row']=$this->user_model->showProfileData($id,1,'users');
+
+        // pr($data,1);
+
 
         $this->load->view('viewProfile',$data);
 
@@ -319,19 +321,21 @@ class user extends CI_Controller {
    public function showSearch()
    {
     
-    if(!$this->session->userdata('user_details'))
-    {
-        $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
-        redirect('login');
-        die();
-    }
-   $userdata=$this->session->userdata('user_details');
-   $data=array();
-   $data=$userdata;
-   
-   $id=$userdata['id'];
-   $data['row']=$this->user_model->search();
-   $this->load->view('showSearch',$data);
+        if(!$this->session->userdata('user_details'))
+        {
+            $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+            redirect('login');
+            die();
+        }
+       $userdata=$this->session->userdata('user_details');
+       $data=array();
+       $data=$userdata;
+       
+       $id=$userdata['id'];
+       $data['row']=$this->user_model->search();
+
+       // pr($data,1);
+       $this->load->view('showSearch',$data);
    
    }//end of function
 

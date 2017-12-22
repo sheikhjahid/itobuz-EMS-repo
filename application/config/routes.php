@@ -53,4 +53,5 @@ $route['default_controller'] = 'welcome';
 $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
 $route['404_override'] = '';
+$route['profile/([\w]+)'] = 'user/profile/$1';
 $route['translate_uri_dashes'] = FALSE;

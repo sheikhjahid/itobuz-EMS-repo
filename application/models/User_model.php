@@ -183,13 +183,17 @@ class user_model extends CI_Model
 						public function search()
 						{
 								$keyword=$this->input->post('keyword');
+								$this->db->select('users.*,user-image.image_path');
 								$this->db->join('user-image','users.id = user-image.user_id');
 								$this->db->where ('user-image.status',1);
-								$this->db->like('users.fullname',$keyword);
-								$this->db->or_like('users.phone',$keyword);
-								$this->db->or_like('users.email',$keyword);
-								$this->db->select('users.*,user-image.image_path');
+								$this->db->group_start();
+										$this->db->like('users.fullname',$keyword);
+										$this->db->or_like('users.phone',$keyword);
+										$this->db->or_like('users.email',$keyword);
+								$this->db->group_end();
+								$this->db->order_by('users.id');
 								$query=$this->db->get('users');
+
 								// echo $this->db->last_query();
 								return $query->result();
 						}//end of function
