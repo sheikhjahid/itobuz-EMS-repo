@@ -1,9 +1,11 @@
-
-
 <div class="col-md-5">
   <div class="logo">
-   <h1><a class="navbar-brand" href="http://www.itobuz.com"><img class="Brand" src="<?php echo base_url('/') ?>public/pics/itobuz.png" style="width:10%;position:absolute;
-  top:0.7%;right:93%"></a><a href="<?php echo base_url('user/dashboard'); ?>"> ITOBUZ-EMS BLOG</a></h1>
+    <a class="navbar-brand" href="http://www.itobuz.com">
+      <img class="Brand" src="<?php echo base_url('/') ?>public/pics/itobuz.png" style="width:10%;position:absolute;top:0.7%;right:93%">
+    </a>
+    <h1>
+        <a href="<?php echo base_url('user/dashboard'); ?>">ITOBUZ-EMS BLOG</a>
+    </h1>
  </div>
 </div>
 <div class="col-md-5">
@@ -31,10 +33,9 @@
               if($user_image!='')
               {
             ?>  
-            <img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $user_image->image_path; ?>" style="width:23%;border-radius: 50%" />
+            <img src="<?php echo base_url('/'); ?>/public/pics/<?php echo $user_image->image_path ?>" style="width:23%;border-radius: 50%" />
             <?php 
-              }
-           
+              }           
               else
               {
             ?>
@@ -42,9 +43,9 @@
             <?php
               }
             ?>
-            <?php echo (trim($fullname)==''?$username:$fullname); ?> <b class="caret" style="position:absolute;left:90%;top:45%"></b></a>
+            <?php echo (trim($fullname)==''?$username:$fullname); ?> 
+            <b class="caret" style="position:absolute;left:90%;top:45%"></b></a>
             <ul class="dropdown-menu animated fadeInUp">
-
               <li><a href="<?php echo base_url('user/profile/').$id; ?>">Profile</a></li>
               <li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>
             </ul>

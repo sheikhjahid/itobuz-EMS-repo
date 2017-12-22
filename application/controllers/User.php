@@ -328,21 +328,11 @@ class user extends CI_Controller {
    $userdata=$this->session->userdata('user_details');
    $data=array();
    $data=$userdata;
-
-   $data['row']=$this->user_model->search();
+   
    $id=$userdata['id'];
-   $data['user_image']=$this->user_model->showPicture($id);
-   /*$id=$userdata['id'];
-   if($this->user_model->showPicture($id))
-   {
-
-    $args['user_image']=$this->user_model->showPicture($id);
-
-   }
-*/
+   $data['row']=$this->user_model->search();
    $this->load->view('showSearch',$data);
-    /*print_r($data);
-    die();*/
+   
    }//end of function
 
    public function UploadPage()
@@ -403,8 +393,15 @@ class user extends CI_Controller {
                 $field['user_id']=$userdata['id'];
                 $field['image_path']=basename($zfile);
                 chmod($zfile,0777);
-                $data['imgpath']=$this->user_model->insertData('user-image',$field);
-            }                     
+                
+                if($this->user_model->showPicture($userdata['id']))
+                {
+                    $update['status']=0;
+                    $this->user_model->updateImage($userdata['id'],$update);
+                }//end of if
+                $data['imgpath']=$this->user_model->insertData('user-image',$field);                
+            
+            }//end of if                     
             $this->session->set_flashdata('upload_msg','PICTURE UPLOADED SUCCESSFULLY'); 
             redirect('user/UploadPage'); 
             die();
