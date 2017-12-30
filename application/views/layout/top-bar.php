@@ -17,7 +17,7 @@
          <span class="input-group-btn">
            <button class="btn btn-primary" type="submit" id="search"><i  class="fa fa-search"></i></button>
          </span>
-       </form>
+      </form>
      </div>
    </div>
  </div>
@@ -29,6 +29,7 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
             <?php
             if($user_image!='')
             {
@@ -38,9 +39,9 @@
             }           
             else
             {
-              ?>
-              <i class="fa fa-user"></i>
-              <?php
+              ?> 
+              <i class="fa fa-user"></i>;
+              <?php  
             }
             ?>
             <?php echo (trim($fullname)==''?$username:$fullname); ?> 

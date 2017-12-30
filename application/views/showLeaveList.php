@@ -69,6 +69,7 @@
         <th>APPLIED DATE</th>
         <th>COMMENTS</th>
         <th>ACTION</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -84,7 +85,7 @@
           <td><?php echo date('Y-m-d',strtotime($value->end_date)); ?></td>
           <td><?php echo date('Y-m-d',strtotime($value->apply_date)); ?></td>
           <td><?php echo ucwords($value->comments); ?></td>
-
+          
           <td>
             <a href="<?php echo base_url('user/acceptLeave/').$value->id; ?>">
               <i class="fa fa-check-square-o" aria-hidden="true"> Accept</i>
@@ -93,6 +94,7 @@
               <i class="fa fa-window-close" aria-hidden="true"> Reject</i>
             </a>
           </td>
+          
         </tr>
 
         <?php } ?>    
@@ -115,7 +117,9 @@
           <th>END DATE</th>
           <th>APPLIED DATE</th>
           <th>COMMENTS</th>
+          
           <th>ACTION</th> 
+          
         </tr>
       </thead>
       <tbody>
@@ -131,6 +135,7 @@
             <td><?php echo date('Y-m-d',strtotime($value->end_date)); ?></td>
             <td><?php echo date('Y-m-d',strtotime($value->apply_date)); ?></td>
             <td><?php echo ucwords($value->comments); ?></td>
+            
             <td>
               <a href="<?php echo base_url('user/rejectLeave/').$value->id; ?>">
                 <i class="fa fa-window-close" aria-hidden="true"> Reject</i>
@@ -198,10 +203,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php 
-            foreach($expired as $value) 
-            {  
-              ?>
+            
               <tr>
                 <td><?php echo $value->id; ?></td>
                 <td><?php echo $value->user_name; ?></td>
@@ -212,8 +214,6 @@
                 <td><?php echo ucwords($value->comments); ?></td>
                 
               </tr>
-
-              <?php } ?>    
 
             </tbody>
           </table>

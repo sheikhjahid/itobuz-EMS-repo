@@ -76,12 +76,11 @@
             width:120px;background-color:blue;border-radius:15%">
           <?php } 
           else
-          {
-            ?>
-            <i class="fa fa-user"></i>
-          <?php }
-
-          ?>
+          { ?>
+            <i class="fa fa-user"></i>; 
+          <?php
+          }
+           ?>
           <!-- <div><label><b>Upload your profile pictire</b></label></div> -->
          
 

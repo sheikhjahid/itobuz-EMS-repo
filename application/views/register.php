@@ -23,37 +23,37 @@
   </head>
   <style>
   input[type=submit] {
-  
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
 
-    .wrapper{
-  text-align: left;
-}
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  .wrapper{
+    text-align: left;
+  }
 
 
 
-.btn-default
-{
-  top: 85%;
-  left:75%;
-  position:absolute;
+  .btn-default
+  {
+    top: 85%;
+    left:75%;
+    position:absolute;
 
-}
+  }
 
-.form-top{
+  .form-top{
 
-text-align:center;
-position:absolute;
-top:2%;
-left:18%;
-right:9%;
-}
+    text-align:center;
+    position:absolute;
+    top:2%;
+    left:18%;
+    right:9%;
+  }
   .fullname
   {
 
@@ -96,7 +96,7 @@ right:9%;
 
   }
 
-.team
+  .team
   {
 
     position:absolute;
@@ -122,64 +122,64 @@ right:9%;
     bottom:21%;
   }
 
-#register{
+  #register{
 
-  width:180px;
-  right:32%;
-  bottom:5%;
-  position:absolute;
-  background-color:green;
-}
-
-
-.col-sm-5{
-font-size:17px;
-background-color: white;
-text-align:center;
-position:absolute;
-right:60%;
-left:25%;
-top:98%;
-width:530px;
-
-border:1px groove;
-padding-right:0px;
-padding-top:0px;
-padding-top:0px;
-padding-left:0px;
-padding-bottom:0px;
-}
+    width:180px;
+    right:32%;
+    bottom:5%;
+    position:absolute;
+    background-color:green;
+  }
 
 
-.drop{
+  .col-sm-5{
+    font-size:17px;
+    background-color: white;
+    text-align:center;
+    position:absolute;
+    right:60%;
+    left:25%;
+    top:98%;
+    width:530px;
 
-  background-color:grey;
-  border:none;
-  width:180px;
-  height:40px;
-  border-radius:5px;
-  position:absolute;
-  right:55%;
-
-}
+    border:1px groove;
+    padding-right:0px;
+    padding-top:0px;
+    padding-top:0px;
+    padding-left:0px;
+    padding-bottom:0px;
+  }
 
 
+  .drop{
 
-p.groove
-{
-  border-style:groove;
-}
+    background-color:grey;
+    border:none;
+    width:180px;
+    height:40px;
+    border-radius:5px;
+    position:absolute;
+    right:55%;
 
-.btn-group
-{
+  }
 
-text-align:center;
-position:absolute;
-bottom:23%;
-right:29%;
-left:-201%;
 
-}
+
+  p.groove
+  {
+    border-style:groove;
+  }
+
+  .btn-group
+  {
+
+    text-align:center;
+    position:absolute;
+    bottom:23%;
+    right:29%;
+    left:-201%;
+
+  }
 
   .symbol
   {
@@ -189,7 +189,7 @@ left:-201%;
     right:45%;
 
   }  
- 
+
   .sign
   {
     position:absolute;
@@ -201,8 +201,8 @@ left:-201%;
     background-color:red; 
   }
 
-  </style>
- 
+</style>
+
 <body>
   <div class="header">
    <div class="container">
@@ -237,71 +237,74 @@ left:-201%;
          </br>
          <div class="form-top">
           <div class="form-top-left">
-            
-            
-          </br>
-          </br>
-          </br>
-            <h3 class="sign"><b><u><center>Sign Up Form</center></u></b></h3>
-           
-          </div>
 
-        </div>
 
-        <div class="form-bottom">
-          <form role="form" action="<?php echo base_url('user/register'); ?>" method="post" class="registration-form">
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-            <div class="form-group">
-             <!--  <label class="sr-only" for="form-full-name">Full Name</label> -->
-              <label class="fullname">FullName : </label> <input type="text" name="fullname" placeholder="Enter your fullname here" class="form-fullname form-control" id="form-fullname">
-            </div>
-            <div class="form-group">
-              </br>
-              <label class="email">Email : </label> <input type="text" name="email" placeholder="Enter your email here" class="form-email form-control" id="form-email">
-            </div>
           </br>
         </br>
-
-        <div class="form-group">
-          <label class="team">Select Team : </label><select name="team_id" class="drop1">
-          <option value="0">Select Team</option>
-            <?php foreach($team_list as $t){ ?>
-            <option value="<?php echo $t->id; ?>">
-              <?php echo ucwords($t->name); ?>
-            </option>
-
-            <?php } ?>
-          </select>
-
-        </div>
-
       </br>
-    </br>
-
-    <div class="form-group">
-      <label class="role">Select Role : </label><select name="role_id" class="drop2">
-        <option value="0">Select Role</option>
-        <?php foreach($role_list as $r){ ?>
-        <option value="<?php echo $r->id; ?>">
-          <?php echo ucwords($r->name); ?>
-        </option>
-
-        <?php } ?>
-      </select>
+      <h3 class="sign"><b><u><center>Sign Up Form</center></u></b></h3>
 
     </div>
 
-    <div>
-    <button type="submit" class="btn" id="register"> Register <i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
   </div>
 
-
+  <div class="form-bottom">
+    <form role="form" action="<?php echo base_url('user/register'); ?>" method="post" class="registration-form">
+    </br>
   </br>
+</br>
+</br>
+</br>
+</br>
+<div class="form-group">
+ <!--  <label class="sr-only" for="form-full-name">Full Name</label> -->
+ <label class="fullname">FullName : </label> <input type="text" name="fullname" placeholder="Enter your fullname here" class="form-fullname form-control" id="form-fullname">
+</div>
+<div class="form-group">
+</br>
+<label class="email">Email : </label> <input type="text" name="email" placeholder="Enter your email here" class="form-email form-control" id="form-email">
+</div>
+</br>
+</br>
+
+<div class="form-group">
+  <label class="team">Select Team : </label><select name="team_id" class="drop1">
+    <option value="0">Select Team</option>
+    <?php foreach($team_list as $t){ ?>
+    <option value="<?php echo $t->id; ?>">
+      <?php echo ucwords($t->name); ?>
+    </option>
+
+    <?php } ?>
+  </select>
+
+</div>
+
+</br>
+</br>
+
+<div class="form-group">
+  <label class="role">Select Role : </label><select name="role_id" class="drop2">
+    <option value="0">Select Role</option>
+    <?php foreach($role_list as $r){ ?>
+    <option value="<?php echo $r->id; ?>">
+      <?php echo ucwords($r->name); ?>
+    </option>
+
+    <?php } ?>
+  </select>
+
+</div>
+
+<div>
+  <button type="submit" class="btn" id="register"> Register 
+    <i class="fa fa-arrow-right" aria-hidden="true"> </i>
+  </button>
+
+</div>
+
+
+</br>
 </br>
 <!-- <?php  //echo $password; ?> -->
 </br>

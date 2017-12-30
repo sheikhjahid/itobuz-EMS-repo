@@ -22,7 +22,7 @@
 						<li class="current">
 							<a href="<?php echo base_url('user/updateUserData/').$id;?>">
 								<i class="fa fa-pencil"></i> Update Profile</a>
-						</li>
+							</li>
 
 							<li class="current">
 								<a href="<?php echo base_url('user/UploadPage'); ?>">
@@ -44,10 +44,7 @@
 										Apply
 									</a>
 								</li>
-								<?php if($role_id==1 || $role_id==7 || $role_id==9 || $role_id==10)
-								{
-								 ?>
-								
+								<?php if(($role_id==1) || ($role_id==7) || ($role_id==9) ||($role_id==10)) {?>
 								<li class="current">
 									<a href="<?php echo  base_url('user/showLeaveList'); ?>">
 										<i class="fa fa-list"></i>

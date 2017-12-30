@@ -76,7 +76,7 @@ public function authentication()
         $args['team_id']=$user_details->team_id;
         $args['fullname']=$user_details->fullname;
         $args['start_date']=$user_details->start_date;
-        $args['end_date']=$user_details->end_date;
+        
         if($this->user_model->showPicture($user_details->id))
         {
             $args['user_image']=$this->user_model->showPicture($user_details->id);
@@ -482,21 +482,20 @@ public function doUpload()
         $data['rejectedleaves']=$this->user_model->showleaveByStatus(0);
         //expired leave code start
         $today=date('Y-m-d');
-        $startdate=date('Y-m-d',$this->input->post('start_date'));
-        $enddate=date('Y-m-d',$this->input->post('end_date'));
-        if($today>=$startdate && $today>=$enddate)
+        $startdate['start_date']=$userdata;
+        if($today>$startdate)
         {
+
+            $index['id']=$userdata;
             $post['status']=3;
-            $id=$userdata['id'];
-            $query=$this->user_model->updateData($id,$post,'leave-table');
+            $query=$this->user_model->updateData($index,$post,'leave-table');
             if($query==1)
             {
-               $data['expired']=$this->user_model->showleaveByStatus(3);
+             $data['expired']=$this->user_model->showleaveByStatus(3);
             }//end of inner-if
         }//end of outer-if
         
         //expired leave code ends here
-
         $this->load->view('showLeaveList',$data);
 
     }//end  of  function
@@ -538,9 +537,9 @@ public function doUpload()
         $query=$this->user_model->updateData($id,$post,'leave-table');
         if($query==1)
         {
-           $this->session->set_flashdata('reject_msg','Leave Rejected!!');
-           redirect('user/showLeaveList',$data);
-           die();
+         $this->session->set_flashdata('reject_msg','Leave Rejected!!');
+         redirect('user/showLeaveList',$data);
+         die();
         }///end of if
     }//end of function
 

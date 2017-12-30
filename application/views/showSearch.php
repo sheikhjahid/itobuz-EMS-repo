@@ -1,5 +1,5 @@
 <?php 
-        require_once 'layout/header.php';
+require_once 'layout/header.php';
 ?>
 <div class="col-md-10">
 
@@ -37,7 +37,6 @@
     </div>
 </div>
 <?php 
-        require_once 'layout/footer.php';
-    
+require_once 'layout/footer.php';
+
 ?>
-            
