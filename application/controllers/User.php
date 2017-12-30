@@ -30,77 +30,79 @@ class user extends CI_Controller {
     {
 
       $this->load->view("welcome_message");
+  }
+
+  public function login()
+  {
+    if(!$this->session->set_userdata('user_details'))
+    {
+        $this->load->view("login-new");
+    }
+    else
+    {
+        redirect('user/authentication');
+    }
+}
+
+public function dashboard()
+{
+    if(!$this->session->userdata('user_details'))
+    {
+        $this->session->set_flashdata('login_error',"USERNAME AND PASSWORD DO NO MATCH");
+        redirect('login');
+        die();
     }
 
-    public function login()
-    {
-        if(!$this->session->set_userdata('user_details'))
-        {
-            $this->load->view("login-new");
-        }
-        else
-        {
-            redirect('user/authentication');
-        }
-    }
-
-    public function dashboard()
-    {
-        if(!$this->session->userdata('user_details'))
-        {
-            $this->session->set_flashdata('login_error',"USERNAME AND PASSWORD DO NO MATCH");
-            redirect('login');
-            die();
-        }
-
-        $userdata=$this->session->userdata('user_details');
-        $data=array();
-        $data=$userdata;
-        $this->load->view("dashboard",$data);
+    $userdata=$this->session->userdata('user_details');
+    $data=array();
+    $data=$userdata;
+    $this->load->view("dashboard",$data);
     
-    }
+}
 
-    public function authentication()
+public function authentication()
+{
+    $post_arr=$this->input->post();
+
+    $username=$post_arr['username'];
+    $password=md5($post_arr['password']);
+
+    $user_details=$this->user_model->checkUser($username,$password);
+
+    if(count($user_details))
     {
-        $post_arr=$this->input->post();
-
-        $username=$post_arr['username'];
-        $password=md5($post_arr['password']);
-
-        $user_details=$this->user_model->checkUser($username,$password);
-        
-        if(count($user_details))
+        $args['id']=$user_details->id;
+        $args['role_id']=$user_details->role_id;
+        $args['team_id']=$user_details->team_id;
+        $args['fullname']=$user_details->fullname;
+        $args['start_date']=$user_details->start_date;
+        $args['end_date']=$user_details->end_date;
+        if($this->user_model->showPicture($user_details->id))
         {
-            $args['id']=$user_details->id;
-            $args['role_id']=$user_details->role_id;
-            $args['team_id']=$user_details->team_id;
-            $args['fullname']=$user_details->fullname;
-            if($this->user_model->showPicture($user_details->id))
-            {
-                $args['user_image']=$this->user_model->showPicture($user_details->id);
-            }
-            $this->session->set_userdata('user_details',$args);
-
-            redirect('user/dashboard');
-            die();
-
+            $args['user_image']=$this->user_model->showPicture($user_details->id);
         }
-        else
-        {
-            $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
-            redirect('login');
-            die();
+        $this->session->set_userdata('user_details',$args);
 
-        }
+        redirect('user/dashboard');
+        die();
+
+    }
+    else
+    {
+        $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+        redirect('login');
+        die();
+
+    }
 
         //redirect('user/dashboard');
-    }
+}
 
-    public function logout()
-    {
-        $this->session->sess_destroy('user_details');
-        redirect('login');
-        
+public function logout()
+{
+    $this->session->sess_destroy('user_details');
+    redirect('login');
+
     }//end of function
 
 
@@ -131,7 +133,7 @@ class user extends CI_Controller {
             $query=$this->user_model->insertData('users',$post);
             if($query==1)
             {
-                
+
                 $this->session->set_flashdata('insert_msg','USER REGISTERED SUCCESSFULLY');
                 $config = Array(        
                     'protocol' => 'smtp',
@@ -144,21 +146,21 @@ class user extends CI_Controller {
                     'charset'   => 'iso-8859-1'
                 );
 
-                    $this->load->library('email', $config);
-                    $this->email->set_newline("\r\n");
+                $this->load->library('email', $config);
+                $this->email->set_newline("\r\n");
 
-                          
 
-                    $message="<html><body><span>This is your password to access in to the portal: {$password}</span></body></html>";
 
-                    $this->email->from('jahid@itobuz.com','Your account has been created!!');
-                    $this->email->to($this->input->post['email']);
-                    $this->email->Subject('PASSWORD CREATION CONFIRMATION');
-                    $this->email->message($message);
+                $message="<html><body><span>This is your password to access in to the portal: {$password}</span></body></html>";
 
-                      if($this->email->send())
-                      {
-                        $this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, Password has been emailed to the user");
+                $this->email->from('jahid@itobuz.com','Your account has been created!!');
+                $this->email->to($this->input->post['email']);
+                $this->email->Subject('PASSWORD CREATION CONFIRMATION');
+                $this->email->message($message);
+
+                if($this->email->send())
+                {
+                    $this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, Password has been emailed to the user");
 
                       }//end of if
 
@@ -167,9 +169,9 @@ class user extends CI_Controller {
                         $this->session->set_flashdata('insert_msg',"USER REGISTERED SUCCESSFULLY, !!Email was not sent to the user!! Password : ".$password);
                       }//end of else
 
-                    redirect('user/showUserData',$data);
-                    die();
-            
+                      redirect('user/showUserData',$data);
+                      die();
+
             }//end of  inner if
         }//end of outer if
         $data['team_list']=$this->user_model->get_Data('team'); 
@@ -317,26 +319,26 @@ class user extends CI_Controller {
         $this->load->view('viewProfile',$data);
 
      }//end of function
-    
-   public function showSearch()
-   {
-    
+
+     public function showSearch()
+     {
+
         if(!$this->session->userdata('user_details'))
         {
             $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
             redirect('login');
             die();
         }
-       $userdata=$this->session->userdata('user_details');
-       $data=array();
-       $data=$userdata;
-       
-       $id=$userdata['id'];
-       $data['row']=$this->user_model->search();
+        $userdata=$this->session->userdata('user_details');
+        $data=array();
+        $data=$userdata;
+
+        $id=$userdata['id'];
+        $data['row']=$this->user_model->search();
 
        // pr($data,1);
-       $this->load->view('showSearch',$data);
-   
+        $this->load->view('showSearch',$data);
+
    }//end of function
 
    public function UploadPage()
@@ -360,9 +362,9 @@ class user extends CI_Controller {
     $this->load->view('viewUpload',$data);
 }
 
-    public function doUpload()
-   { 
-    
+public function doUpload()
+{ 
+
     if(!$this->session->userdata('user_details'))
     {
         $this->session->set_flashdata('login_error','USERNAMME AND PASSWORD DO NOT MATCH');
@@ -374,37 +376,37 @@ class user extends CI_Controller {
     $data=array();
     $data=$userdata;
 
-         $config['upload_path']   = './public/pics/'; 
-         $config['allowed_types'] = 'gif|jpg|png|jpeg'; 
-         $config['max_size']      = '100'; 
-         $config['max_width']     = '1024'; 
-         $config['max_height']    = '768';  
-         $config['file_name']     = $userdata['fullname'].'_profile';  
-         $this->load->library('upload', $config);
-            
-        if ( ! $this->upload->do_upload('userfile')) 
+    $config['upload_path']   = './public/pics/'; 
+    $config['allowed_types'] = 'gif|jpg|png|jpeg'; 
+    $config['max_size']      = '100'; 
+    $config['max_width']     = '1024'; 
+    $config['max_height']    = '768';  
+    $config['file_name']     = $userdata['fullname'].'_profile';  
+    $this->load->library('upload', $config);
+
+    if ( ! $this->upload->do_upload('userfile')) 
+    {
+        $this->session->set_flashdata('upload_error',$this->upload->display_errors());            
+        redirect('user/UploadError', $data); 
+        die();
+    }           
+    else 
+    {
+        if($_SERVER['REQUEST_METHOD']=="POST")
         {
-            $this->session->set_flashdata('upload_error',$this->upload->display_errors());            
-            redirect('user/UploadError', $data); 
-            die();
-        }           
-        else 
-        {
-            if($_SERVER['REQUEST_METHOD']=="POST")
+            $data['upload_data']= $this->upload->data(); 
+            $zfile = $data['upload_data']['full_path']; 
+            $field['user_id']=$userdata['id'];
+            $field['image_path']=basename($zfile);
+            chmod($zfile,0777);
+
+            if($this->user_model->showPicture($userdata['id']))
             {
-                $data['upload_data']= $this->upload->data(); 
-                $zfile = $data['upload_data']['full_path']; 
-                $field['user_id']=$userdata['id'];
-                $field['image_path']=basename($zfile);
-                chmod($zfile,0777);
-                
-                if($this->user_model->showPicture($userdata['id']))
-                {
-                    $update['status']=0;
-                    $this->user_model->updateImage($userdata['id'],$update);
+                $update['status']=0;
+                $this->user_model->updateImage($userdata['id'],$update);
                 }//end of if
                 $data['imgpath']=$this->user_model->insertData('user-image',$field);                
-            
+
             }//end of if                     
             $this->session->set_flashdata('upload_msg','PICTURE UPLOADED SUCCESSFULLY'); 
             redirect('user/UploadPage'); 
@@ -416,10 +418,131 @@ class user extends CI_Controller {
    
    public function UploadError()
    {
-    
+
     $this->load->view('UploadError');
 
-   }
+   }//end of function
+
+   public function leaveApp()
+   {
+    if(!$this->session->userdata('user_details'))
+    {
+        $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+        redirect('login');
+        die();
+        }//end of if
+        $userdata=$this->session->userdata('user_details');
+        $data=array();
+        $data=$userdata;
+        $data['value']=$this->user_model->get_Data('types-leave');
+
+        $this->load->view('leaveApp',$data);
+
+   }//end of function
+
+   public function insertLeaveData()
+   {
+    if(!$this->session->userdata('user_details'))
+    {
+        $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+        redirect('login');
+        die();
+    }//end of if
+    $userdata=$this->session->userdata('user_details');
+    $data=array();
+    $data=$userdata;
+
+    $post=$this->input->post();
+    $post['user_id']=$userdata['id'];
+    $post['leave_id']=$this->input->post('leave_id');
+    $query=$this->user_model->insertData('leave-table',$post);
+    if($query==1)
+    {
+        $this->session->set_flashdata('leave_msg','Your request was  successfully sent to the concerned person!!');
+        redirect('user/leaveApp',$data);
+        die();
+    } //end of if
+
+   }//end of function 
+
+   public function showLeaveList()
+   {
+
+    if(!$this->session->userdata('user_details'))
+    {
+        $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+        redirect('login');
+        die();
+        }//end of  if
+        $userdata=$this->session->userdata('user_details');
+        $data=array();
+        $data=$userdata;
+        $data['allleaves']=$this->user_model->showleaveByStatus(1);
+        $data['approvedleaves']=$this->user_model->showleaveByStatus(2);
+        $data['rejectedleaves']=$this->user_model->showleaveByStatus(0);
+        //expired leave code start
+        $today=date('Y-m-d');
+        $startdate=date('Y-m-d',$this->input->post('start_date'));
+        $enddate=date('Y-m-d',$this->input->post('end_date'));
+        if($today>=$startdate && $today>=$enddate)
+        {
+            $post['status']=3;
+            $id=$userdata['id'];
+            $query=$this->user_model->updateData($id,$post,'leave-table');
+            if($query==1)
+            {
+               $data['expired']=$this->user_model->showleaveByStatus(3);
+            }//end of inner-if
+        }//end of outer-if
+        
+        //expired leave code ends here
+
+        $this->load->view('showLeaveList',$data);
+
+    }//end  of  function
+
+    public function acceptLeave($id)
+    {
+        if(!$this->session->userdata('user_details'))
+        {
+            $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+            redirect('login');
+            die();
+        }//end of if
+        $userdata=$this->session->userdata('user_details');
+        $data=array();
+        $data=$userdata;
+        $post['status']=2;
+        $query=$this->user_model->updateData($id,$post,'leave-table');
+        if($query==1)
+        {
+            $this->session->set_flashdata('accept_msg','Leave Accepted!!');
+            redirect('user/showLeaveList',$data);
+            die();
+        }//end of if
+    }//end of function
+
+    public function rejectLeave($id)
+    {
+        if(!$this->session->userdata('user_details'))
+        {
+            $this->session->set_flashdata('login_error','USERNAME AND PASSWORD DO NOT MATCH');
+            redirect('login');
+            die();
+        }//end of if
+        $userdata=$this->session->userdata('user_details');
+        $data=array();
+        $data=$userdata;
+
+        $post['status']=0;
+        $query=$this->user_model->updateData($id,$post,'leave-table');
+        if($query==1)
+        {
+           $this->session->set_flashdata('reject_msg','Leave Rejected!!');
+           redirect('user/showLeaveList',$data);
+           die();
+        }///end of if
+    }//end of function
 
 
 }//end of controller class

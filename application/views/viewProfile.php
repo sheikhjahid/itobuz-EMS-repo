@@ -74,7 +74,14 @@
             <?php if($user_image!=''){ ?>
           <img src="<?php echo base_url('/'); ?>public/pics/<?php echo $profile->image_path; ?>" class="circle" style="height:140px;
             width:120px;background-color:blue;border-radius:15%">
-          <?php } ?>
+          <?php } 
+          else
+          {
+            ?>
+            <i class="fa fa-user"></i>
+          <?php }
+
+          ?>
           <!-- <div><label><b>Upload your profile pictire</b></label></div> -->
          
 

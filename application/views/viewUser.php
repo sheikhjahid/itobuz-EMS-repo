@@ -18,15 +18,6 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style type="text/css">
-  .symbol
-  {
-    position:absolute;
-    right:23%;
-    top:-0.5%;
-    width:45px;
-  }
-   </style>
   
   <body>
   	<div class="header">
@@ -58,7 +49,7 @@
 
   					<div class="container">
         
-              <h1 class="symbol"><img src="<?php echo base_url('/'); ?>public/pics/itobuz.png"></h1>
+              <h1 class="symbol"><img src="<?php echo base_url('/'); ?>public/pics/itobuz.png" style="width:97px;position:absolute;left:60%;top:30%"></h1>
 
       <?php foreach($data as $value) {?>            
     <div class="row">

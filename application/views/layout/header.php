@@ -11,6 +11,10 @@
     <!-- styles -->
     <link href="<?php echo base_url('/'); ?>public/css/styles.css" rel="stylesheet">
     <link href="<?php echo base_url('/'); ?>public/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('/'); ?>public/css/skeleton.css" >
+    <script src="<?php echo base_url('/'); ?>public/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url('/'); ?>public/css/form.css" >
+    <script src="<?php echo base_url('/'); ?>public/js/form.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>

@@ -18,7 +18,7 @@
                             <div class="col-md-6">
                             </br>
                             <!--  <?php //foreach($user_image as $value){ ?> -->
-                            <left><a href="<?php echo base_url('user/profile/').$r->id; ?>"><img src="<?php echo base_url('public/pics/').$r->image_path; ?>" style="width:100px;position:absolute;left:45%;top:-20%"></a>
+                            <left><a href="<?php echo base_url('user/profile/').$r->id; ?>"><img src="<?php echo base_url('public/pics/').$r->image_path; ?>" style="width:100px;position:absolute;left:57%;top:7%;border-radius:20%"></a>
 
                                 <div><b>FULLNAME : <?php echo $r->fullname; ?></b></div>
                                 <div><b>PHONE : <?php echo $r->phone; ?></b></div>
